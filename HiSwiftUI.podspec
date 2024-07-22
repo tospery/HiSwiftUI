@@ -13,16 +13,17 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.swift_version = '5.3'
   s.ios.deployment_target = '16.0'
-  s.frameworks = 'Foundation', 'CoreGraphics', 'UIKit'
+  s.frameworks = 'Foundation', 'CoreGraphics', 'UIKit', 'SwiftUI'
   
   s.source_files = 'HiSwiftUI/**/*'
-  s.dependency 'FCUUID', '~> 1.0'
-  s.dependency 'DeviceKit', '~> 5.0'
-  s.dependency 'SwiftyBeaver', '~> 1.0'
-  s.dependency 'ObjectMapper', '~> 4.0'
-  s.dependency 'SwifterSwift/SwiftStdlib', '~> 6.0'
-  s.dependency 'SwifterSwift/Foundation', '~> 6.0'
-  s.dependency 'SwifterSwift/CoreGraphics', '~> 6.0'
-  s.dependency 'SwifterSwift/UIKit', '~> 6.0'
+  s.dependency 'HiCore', '~> 1.0'
+  s.dependency 'HiNet', '~> 1.0'
+  s.dependency 'HiResource', '~> 1.0'
+  s.dependency 'SwifterSwift', '~> 6.0'
+  s.dependency 'BonMot', '~> 6.0'
+  s.dependency 'Kingfisher', '~> 7.0'
+  s.dependency 'DZNEmptyDataSet', '~> 1.0'
+  s.dependency 'TTTAttributedLabel', '~> 2.0'
+  s.dependency 'MJRefresh', '~> 3.0'
   
 end
