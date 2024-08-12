@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'HiSwiftUI'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'Hi SwiftUI.'
   s.description      = <<-DESC
 						Hi for SwiftUI.
