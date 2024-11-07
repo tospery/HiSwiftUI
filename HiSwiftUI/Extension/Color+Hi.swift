@@ -16,7 +16,10 @@ public extension Color {
     
     static var accent: Color { .accentColor }
     
-    static var background: Color { .secondary }
+    static var background: Color { .white }
+    static var surface: Color { Color.init(uiColor: .init(hex: 0xF4F4F4)!) }
+    static var container: Color { Color.init(uiColor: .init(hex: 0xD1D1D1)!) }
+    
     static var foreground: Color { .primary }
     
     static var fg05: Color { .primary.opacity(0.05) }
