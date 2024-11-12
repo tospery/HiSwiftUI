@@ -44,4 +44,14 @@ public extension UIApplication {
         return scheme
     }
     
+    public var myKeyWindow: UIWindow {
+        if let window1 = self.connectedScenes.compactMap { ($0 as? UIWindowScene)?.keyWindow }.first {
+            return window1
+        }
+        if let window2 = self.windows.filter { $0.isKeyWindow }.first {
+            return window2
+        }
+        return .init()
+    }
+    
 }

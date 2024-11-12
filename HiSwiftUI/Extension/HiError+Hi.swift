@@ -110,7 +110,7 @@ extension ASWebAuthenticationSessionError: HiErrorCompatible {
     public var hiError: HiError {
         switch self.code {
         case .canceledLogin:
-            return .none
+            return .cancel
         default:
             return .app(ErrorCode.asError, self.localizedDescription, nil)
         }
