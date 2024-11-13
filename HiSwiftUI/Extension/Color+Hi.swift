@@ -28,8 +28,8 @@ public extension Color {
     static var title: Color { Color.init(uiColor: .init(hex: 0x333333)!) }
     static var headline: Color { Color.init(uiColor: .init(hex: 0x666666)!) }
     static var body: Color { Color.init(uiColor: .init(hex: 0x888888)!) }
-    static var footnote: Color { Color.init(uiColor: .init(hex: 0xD2D2D2)!) }
-    static var caption: Color { Color.init(uiColor: .init(hex: 0xB2B2B2)!) }
+    static var footnote: Color { Color.init(uiColor: .init(hex: 0xCCCCCC)!) }
+    static var caption: Color { Color.init(uiColor: .init(hex: 0xD3D3D3)!) }
 }
 
 public extension UIColor {
