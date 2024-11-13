@@ -17,31 +17,19 @@ public extension Color {
     static var accent: Color { .accentColor }
     
     static var background: Color { .white }
+    static var foreground: Color { .primary }
+    
     static var surface: Color { Color.init(uiColor: .init(hex: 0xF4F4F4)!) }
     static var container: Color { Color.init(uiColor: .init(hex: 0xD1D1D1)!) }
     
-    static var foreground: Color { .primary }
+    static var separator: Color { Color.init(uiColor: .init(hex: 0xE0E0E0)!) }
+    static var indicator: Color { Color.init(uiColor: .init(hex: 0xE0E0E0)!) }
     
-    static var fg05: Color { .primary.opacity(0.05) }
-    static var fg10: Color { .primary.opacity(0.10) }
-    static var fg15: Color { .primary.opacity(0.15) }
-    static var fg20: Color { .primary.opacity(0.20) }
-    static var fg25: Color { .primary.opacity(0.25) }
-    static var fg30: Color { .primary.opacity(0.30) }
-    static var fg35: Color { .primary.opacity(0.35) }
-    static var fg40: Color { .primary.opacity(0.40) }
-    static var fg45: Color { .primary.opacity(0.45) }
-    static var fg50: Color { .primary.opacity(0.50) }
-    static var fg55: Color { .primary.opacity(0.55) }
-    static var fg60: Color { .primary.opacity(0.60) }
-    static var fg65: Color { .primary.opacity(0.65) }
-    static var fg70: Color { .primary.opacity(0.70) }
-    static var fg75: Color { .primary.opacity(0.75) }
-    static var fg80: Color { .primary.opacity(0.80) }
-    static var fg85: Color { .primary.opacity(0.85) }
-    static var fg90: Color { .primary.opacity(0.90) }
-    static var fg95: Color { .primary.opacity(0.95) }
-    
+    static var title: Color { Color.init(uiColor: .init(hex: 0x333333)!) }
+    static var headline: Color { Color.init(uiColor: .init(hex: 0x666666)!) }
+    static var body: Color { Color.init(uiColor: .init(hex: 0x888888)!) }
+    static var footnote: Color { Color.init(uiColor: .init(hex: 0xD2D2D2)!) }
+    static var caption: Color { Color.init(uiColor: .init(hex: 0xB2B2B2)!) }
 }
 
 public extension UIColor {

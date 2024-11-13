@@ -33,7 +33,7 @@ public struct ErrorView: View {
                     .padding(.bottom, 5)
                 Text(error.asHiError.errorDescription ?? "")
                     .multilineTextAlignment(.center)
-                    .foregroundStyle(Color.fg40)
+                    .foregroundStyle(Color.footnote)
                     .font(.body)
             }
              .frame(maxWidth: .infinity, maxHeight: .infinity)
