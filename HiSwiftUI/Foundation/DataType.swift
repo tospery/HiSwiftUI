@@ -15,6 +15,6 @@ public protocol AlertActionType {
 
 extension AlertActionType {
     var style: UIAlertAction.Style {
-        return .destructive
+        return .default
     }
 }

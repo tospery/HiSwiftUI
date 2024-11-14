@@ -12,6 +12,14 @@ import HiBase
 
 extension HiNav {
     
+    // MARK: - toast
+    public func toastLink(_ message: String, active: Bool = false) -> String {
+        var parameters = [String: String].init()
+        parameters[Parameter.message] = message
+        parameters[Parameter.active] = active.string
+        return urlString(host: .toast, parameters: parameters)
+    }
+    
     // MARK: - alert
     public func alertLink(_ title: String, _ message: String, _ actions: [AlertActionType]) -> String {
         var parameters = [String: String].init()
