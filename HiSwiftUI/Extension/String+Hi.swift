@@ -15,19 +15,19 @@ public extension String {
         return url.scheme == UIApplication.shared.urlScheme
     }
     
-    static func deepLink(
-        host: String,
-        path: String? = nil,
-        parameters: [String: String]? = nil
-    ) -> String {
-        var url = "\(UIApplication.shared.urlScheme)://\(host)".url!
-        if let path = path {
-            url.appendPathComponent(path)
-        }
-        if let parameters = parameters {
-            url.appendQueryParameters(parameters)
-        }
-        return url.absoluteString
-    }
+//    static func deepLink(
+//        host: String,
+//        path: String? = nil,
+//        parameters: [String: String]? = nil
+//    ) -> String {
+//        var url = "\(UIApplication.shared.urlScheme)://\(host)".url!
+//        if let path = path {
+//            url.appendPathComponent(path)
+//        }
+//        if let parameters = parameters {
+//            url.appendQueryParameters(parameters)
+//        }
+//        return url.absoluteString
+//    }
     
 }
