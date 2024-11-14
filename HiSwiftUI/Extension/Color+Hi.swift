@@ -9,12 +9,7 @@ import SwiftUI
 import UIKit
 
 public extension Color {
-    
-    public var uiColor: UIColor {
-        .init(self)
-    }
-    
-    static var accent: Color { .accentColor }
+    public var uiColor: UIColor { .init(self) }
     
     static var background: Color { .white }
     static var foreground: Color { .primary }
