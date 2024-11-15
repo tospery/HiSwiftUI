@@ -10,9 +10,17 @@ import SwifterSwift
 
 public extension String {
     
-    var isValidAppScheme: Bool {
+    var isValidInternalDeepLink: Bool {
         guard let url = self.url else { return false }
         return url.scheme == UIApplication.shared.urlScheme
+    }
+    
+    var isValidExternalDeepLink: Bool {
+        guard let scheme = self.url?.scheme else { return false }
+        if scheme == UIApplication.shared.urlScheme || scheme == "http" || scheme == "https" {
+            return false
+        }
+        return true
     }
     
 //    static func deepLink(
