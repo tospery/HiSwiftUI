@@ -69,12 +69,15 @@ public enum HiNavError: Error {
 
 public protocol HiNavCompatible {
     
-    // deep-link
+    // 合法的外部跳转
     func isLegalHost(host: HiNav.Host) -> Bool
     func allowedPaths(host: HiNav.Host) -> [HiNav.Path]
     
     // user-login
     func needLogin(host: HiNav.Host, path: HiNav.Path?) -> Bool
+    
+    // state
+    func resolution(_ target: String) -> Any?
     
 }
 
@@ -95,6 +98,13 @@ final public class HiNav {
             url.appendQueryParameters(parameters)
         }
         return url.absoluteString
+    }
+    
+    public func parse(_ target: String) -> Any? {
+        if let compatible = self as? HiNavCompatible {
+            return compatible.resolution(target)
+        }
+        return nil
     }
     
 }

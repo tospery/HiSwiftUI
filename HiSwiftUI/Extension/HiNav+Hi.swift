@@ -54,9 +54,16 @@ extension HiNav {
         return urlScheme(host: .sheet, parameters: parameters)
     }
     
-//    func checkLogin(_ urlString: String) -> Bool {
-//        guard let url = target.url else { return .none }
-//        guard let host = url.host() else { return .none }
-//    }
+    public func checkNeedLogin(_ target: String) -> Bool {
+        guard let url = target.url else { return false }
+        guard let host = url.host() else { return false }
+        var needLogin = false
+        if let compatible = self as? HiNavCompatible {
+            if compatible.needLogin(host: host, path: url.path()) {
+                needLogin = true
+            }
+        }
+        return needLogin
+    }
     
 }
