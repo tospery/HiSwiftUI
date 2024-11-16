@@ -117,12 +117,12 @@ extension HiNav.Host {
     public static var alert: HiNav.Host { "alert" }
     public static var sheet: HiNav.Host { "sheet" }
     public static var popup: HiNav.Host { "popup" }
+    public static var login: HiNav.Host { "login" }
     
     public static var dashboard: HiNav.Host { "dashboard" }
     public static var personal: HiNav.Host { "personal" }
     
     public static var home: HiNav.Host { "home" }
-    public static var login: HiNav.Host { "login" }
 }
 
 extension HiNav.Path {
