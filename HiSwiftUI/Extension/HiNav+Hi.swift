@@ -13,15 +13,15 @@ import HiBase
 extension HiNav {
     
     // MARK: - toast
-    public func toastLink(_ message: String, active: Bool = false) -> String {
+    public func toastURLScheme(_ message: String, active: Bool = false) -> String {
         var parameters = [String: String].init()
         parameters[Parameter.message] = message
         parameters[Parameter.active] = active.string
-        return urlString(host: .toast, parameters: parameters)
+        return urlScheme(host: .toast, parameters: parameters)
     }
     
     // MARK: - alert
-    public func alertLink(_ title: String, _ message: String, _ actions: [AlertActionType]) -> String {
+    public func alertURLScheme(_ title: String, _ message: String, _ actions: [AlertActionType]) -> String {
         var parameters = [String: String].init()
         parameters[Parameter.title] = title
         parameters[Parameter.message] = message
@@ -34,11 +34,11 @@ extension HiNav {
             actionsValue = actionsValue.removingSuffix(",")
             parameters[Parameter.actions] = actionsValue
         }
-        return urlString(host: .alert, parameters: parameters)
+        return urlScheme(host: .alert, parameters: parameters)
     }
     
     // MARK: - sheet
-    public func sheetLink(_ title: String, _ message: String, _ actions: [AlertActionType]) -> String {
+    public func sheetURLScheme(_ title: String, _ message: String, _ actions: [AlertActionType]) -> String {
         var parameters = [String: String].init()
         parameters[Parameter.title] = title
         parameters[Parameter.message] = message
@@ -51,7 +51,12 @@ extension HiNav {
             actionsValue = actionsValue.removingSuffix(",")
             parameters[Parameter.actions] = actionsValue
         }
-        return urlString(host: .sheet, parameters: parameters)
+        return urlScheme(host: .sheet, parameters: parameters)
     }
+    
+//    func checkLogin(_ urlString: String) -> Bool {
+//        guard let url = target.url else { return .none }
+//        guard let host = url.host() else { return .none }
+//    }
     
 }

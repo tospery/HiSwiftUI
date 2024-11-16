@@ -9,14 +9,14 @@ import UIKit
 
 public extension UIApplication {
     
-    var urlScheme: String { self.urlScheme(name: "app") ?? "" }
+    var appScheme: String { self.appScheme(name: "app") ?? "" }
     
     var linkDomains: [String] { Bundle.main.infoDictionary?["linkDomains"] as? [String] ?? [] }
     
     @objc var baseApiUrl: String {
         var domain = self.linkDomains.first ?? ""
         if domain.isEmpty {
-            domain = "\(self.urlScheme).com"
+            domain = "\(self.appScheme).com"
         }
         return "https://\(domain)"
     }
@@ -24,12 +24,12 @@ public extension UIApplication {
     @objc var baseWebUrl: String {
         var domain = self.linkDomains.first ?? ""
         if domain.isEmpty {
-            domain = "\(self.urlScheme).com"
+            domain = "\(self.appScheme).com"
         }
         return "https://\(domain)"
     }
     
-    func urlScheme(name: String) -> String? {
+    func appScheme(name: String) -> String? {
         var scheme: String? = nil
         if let types = Bundle.main.infoDictionary?["CFBundleURLTypes"] as? Array<Dictionary<String, Any>> {
             for info in types {

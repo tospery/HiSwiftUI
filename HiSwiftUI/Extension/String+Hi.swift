@@ -10,14 +10,14 @@ import SwifterSwift
 
 public extension String {
     
-    var isValidInternalDeepLink: Bool {
+    var isValidInternalURLScheme: Bool {
         guard let url = self.url else { return false }
-        return url.scheme == UIApplication.shared.urlScheme
+        return url.scheme == UIApplication.shared.appScheme
     }
     
-    var isValidExternalDeepLink: Bool {
+    var isValidExternalURLScheme: Bool {
         guard let scheme = self.url?.scheme else { return false }
-        if scheme == UIApplication.shared.urlScheme || scheme == "http" || scheme == "https" {
+        if scheme == UIApplication.shared.appScheme || scheme == "http" || scheme == "https" {
             return false
         }
         return true
