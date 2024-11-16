@@ -37,4 +37,21 @@ extension HiNav {
         return urlString(host: .alert, parameters: parameters)
     }
     
+    // MARK: - sheet
+    public func sheetLink(_ title: String, _ message: String, _ actions: [AlertActionType]) -> String {
+        var parameters = [String: String].init()
+        parameters[Parameter.title] = title
+        parameters[Parameter.message] = message
+        var actionsValue = ""
+        for action in actions {
+            guard let title = action.title, title.isNotEmpty else { continue }
+            actionsValue += "\(title),"
+        }
+        if actionsValue.isNotEmpty {
+            actionsValue = actionsValue.removingSuffix(",")
+            parameters[Parameter.actions] = actionsValue
+        }
+        return urlString(host: .sheet, parameters: parameters)
+    }
+    
 }

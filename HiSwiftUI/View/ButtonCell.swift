@@ -14,16 +14,21 @@ public struct ButtonCell: View {
     let model: ButtonModel
     let action: () -> Void
     
-    init(_ model: ButtonModel, action: @escaping () -> Void) {
+    public init(_ model: ButtonModel, action: @escaping () -> Void) {
         self.model = model
         self.action = action
     }
     
     public var body: some View {
         Button(action: action) {
-            Text(model.title ?? "")
-                .font(.system(size: 16))
-                .foregroundStyle(Color.accentColor)
+            HStack {
+                Spacer()
+                Text((model.title ?? "").localizedStringKey)
+                    .font(.system(size: 17))
+                    .foregroundStyle(Color.accentColor)
+                Spacer()
+            }
+            .padding(.vertical, 2)
         }
         .listRowSeparator(.hidden, edges: .all)
     }
