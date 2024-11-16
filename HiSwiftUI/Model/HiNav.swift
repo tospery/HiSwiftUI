@@ -113,12 +113,6 @@ extension HiNav.Host {
     
     public static var home: HiNav.Host { "home" }
     public static var login: HiNav.Host { "login" }
-    public static var user: HiNav.Host { "user" }
-    public static var custom: HiNav.Host { "custom" }
-    public static var profile: HiNav.Host { "profile" }
-    public static var settings: HiNav.Host { "settings" }
-    public static var about: HiNav.Host { "about" }
-    public static var search: HiNav.Host { "search" }
 }
 
 extension HiNav.Path {
