@@ -10,10 +10,10 @@ import Foundation
 public struct ToastState: Identifiable, Equatable {
     
     public let id: UUID
-    public var active: Bool
+    public var active: Bool?
     public var message: String
     
-    public init(message: String = "", active: Bool = false) {
+    public init(message: String = "", active: Bool? = nil) {
         self.id = .init()
         self.message = message
         self.active = active

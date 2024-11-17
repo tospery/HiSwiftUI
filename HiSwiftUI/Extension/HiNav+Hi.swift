@@ -13,18 +13,26 @@ import HiBase
 extension HiNav {
     
     // MARK: - toast
-    public func toastURLScheme(_ message: String, active: Bool = false) -> String {
+    public func toastURLScheme(_ message: String, active: Bool? = nil) -> String {
         var parameters = [String: String].init()
-        parameters[Parameter.message] = message
-        parameters[Parameter.active] = active.string
+        if message.isNotEmpty {
+            parameters[Parameter.message] = message
+        }
+        if active != nil {
+            parameters[Parameter.active] = active!.string
+        }
         return urlScheme(host: .toast, parameters: parameters)
     }
     
     // MARK: - alert
     public func alertURLScheme(_ title: String, _ message: String, _ actions: [AlertActionType]) -> String {
         var parameters = [String: String].init()
-        parameters[Parameter.title] = title
-        parameters[Parameter.message] = message
+        if title.isNotEmpty {
+            parameters[Parameter.title] = title
+        }
+        if message.isNotEmpty {
+            parameters[Parameter.message] = message
+        }
         var actionsValue = ""
         for action in actions {
             guard let title = action.title, title.isNotEmpty else { continue }
@@ -40,8 +48,12 @@ extension HiNav {
     // MARK: - sheet
     public func sheetURLScheme(_ title: String, _ message: String, _ actions: [AlertActionType]) -> String {
         var parameters = [String: String].init()
-        parameters[Parameter.title] = title
-        parameters[Parameter.message] = message
+        if title.isNotEmpty {
+            parameters[Parameter.title] = title
+        }
+        if message.isNotEmpty {
+            parameters[Parameter.message] = message
+        }
         var actionsValue = ""
         for action in actions {
             guard let title = action.title, title.isNotEmpty else { continue }

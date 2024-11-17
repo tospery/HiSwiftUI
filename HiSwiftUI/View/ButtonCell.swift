@@ -65,8 +65,8 @@ public struct ButtonCell: View {
                 }
                 .listRowInsets(.zero)
                 .listRowSeparator(.hidden, edges: .all)
-                .background(Color.surface)
                 .padding(.vertical, 0)
+                .background(Color.surface)
             }
         }
     }
