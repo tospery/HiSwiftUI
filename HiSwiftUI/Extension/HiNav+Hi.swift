@@ -12,6 +12,15 @@ import HiBase
 
 extension HiNav {
     
+    // MARK: - back
+    public func backURLScheme(_ type: BackType? = nil) -> String {
+        var parameters = [String: String].init()
+        if type != nil {
+            parameters[Parameter.type] = type!.rawValue.string
+        }
+        return urlScheme(host: .back, parameters: parameters)
+    }
+    
     // MARK: - toast
     public func toastURLScheme(_ message: String, active: Bool? = nil) -> String {
         var parameters = [String: String].init()
@@ -66,6 +75,7 @@ extension HiNav {
         return urlScheme(host: .sheet, parameters: parameters)
     }
     
+    // MARK: - login
     public func checkNeedLogin(_ target: String) -> Bool {
         guard let url = target.url else { return false }
         guard let host = url.host() else { return false }

@@ -1,6 +1,6 @@
 //
 //  Tile.swift
-//  HiUIKit
+//  HiSwiftUI
 //
 //  Created by liaoya on 2022/9/23.
 //
