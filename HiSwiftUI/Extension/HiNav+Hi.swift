@@ -22,15 +22,20 @@ extension HiNav {
     }
     
     // MARK: - toast
+    public func activateURLScheme(active: Bool = true) -> String {
+        urlScheme(host: .toast, parameters: [
+            Parameter.active: active.string
+        ])
+    }
+    
+    public func deactivateURLScheme() -> String {
+        activateURLScheme(active: false)
+    }
+    
     public func toastURLScheme(_ message: String, active: Bool? = nil) -> String {
-        var parameters = [String: String].init()
-        if message.isNotEmpty {
-            parameters[Parameter.message] = message
-        }
-        if active != nil {
-            parameters[Parameter.active] = active!.string
-        }
-        return urlScheme(host: .toast, parameters: parameters)
+        urlScheme(host: .toast, parameters: [
+            Parameter.message: message
+        ])
     }
     
     // MARK: - alert
