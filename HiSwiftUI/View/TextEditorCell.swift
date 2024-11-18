@@ -18,8 +18,6 @@ public struct TextEditorCell: View {
     var keyboardType: UIKeyboardType
     var characterLimit: Int?
     
-    //@FocusState private var isFocused: Bool
-    
     public init(
         text: Binding<String>,
         focused: Binding<Bool> = .constant(false),
@@ -36,52 +34,30 @@ public struct TextEditorCell: View {
     
     public var body: some View {
         VStack {
-            
-//            FocusableTextEditor(text: $text, isFocused: $isFocused)
-//                         .frame(height: 150)
-//                         .padding(8)
-//                         .background(Color(UIColor.systemGray6))
-//                         .cornerRadius(8)
             FocusableTextEditor(
                 text: $text,
                 focused: $focused,
+                placeholder: placeholder,
+                keyboardType: keyboardType,
                 characterLimit: characterLimit
             )
                 .frame(maxWidth: .infinity)
-                .frame(height: 140)
-            
-//            TextEditor(text: $text)
-//                .font(.system(size: 15))
-//                .frame(maxWidth: .infinity)
-//                .frame(height: 140)
-//                .autocorrectionDisabled()
-//                .textInputAutocapitalization(.never)
-//                .keyboardType(keyboardType)
-            
-            
-//            TextField(placeholder, text: $text)
-//                .font(.system(size: 15))
-//                .frame(maxWidth: .infinity)
-//                .frame(height: 200)
-//                // .lineLimit(5)
-//                .autocorrectionDisabled()
-//                .textInputAutocapitalization(.never)
-//                .focused($isFocused)
-//                .keyboardType(keyboardType)
-//                .onChange(of: isFocused) { newValue in
-//                    focused = newValue
-//                }
-//                .onChange(of: focused) { newValue in
-//                    isFocused = newValue
-//                }
-//                .onChange(of: text) { newValue in
-//                    if let limit = characterLimit, newValue.count > limit {
-//                        text = String(newValue.prefix(limit))
-//                    }
-//                }
-//                .onAppear {
-//                    isFocused = focused
-//                }
+                .frame(height: 120)
+                .onChange(of: text) { newValue in
+                    if let limit = characterLimit, newValue.count > limit {
+                        text = String(newValue.prefix(limit))
+                    }
+                }
+            if let limit = characterLimit {
+                HStack {
+                    Spacer()
+                    Text("\(text.count)/\(limit)")
+                        .font(.system(size: 12))
+                        .foregroundStyle(Color.body)
+                }
+            } else {
+                EmptyView()
+            }
         }
         .listRowSeparator(.hidden, edges: .all)
     }
