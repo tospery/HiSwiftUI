@@ -51,6 +51,54 @@ public extension Publisher {
         }
         return .failure(HiError.unknown)
     }
+
+    func waitForValue(matching targetValue: Output) async -> Output where Output: Equatable, Failure == Never {
+        await withCheckedContinuation { continuation in
+            let cancellable = self
+                .filter { $0 == targetValue }
+                .first()
+                .sink { value in
+                    continuation.resume(returning: value)
+                }
+            _ = cancellable
+        }
+    }
+    
+//    func waitForValue(_ target: Output) async -> Output? where Output: Equatable, Failure == Never {
+////        await withCheckedContinuation { continuation in
+////            let cancellable = self.filter { $0 == target }.first().sink { _ in
+////            } receiveValue: { value in
+////                continuation.resume(returning: value)
+////            }
+////            _ = cancellable
+////        }
+////        for await value in self.values {
+////            if value == target {
+////                return value
+////            }
+////        }
+////        return nil
+//        await withCheckedContinuation { continuation in
+//            var cancellable: AnyCancellable?
+//            var finishedWithoutValue = true
+//            cancellable = self.sink { result in
+//                    switch result {
+//                    case .finished:
+//                        if finishedWithoutValue {
+//                            continuation.resume(returning: nil)
+//                        }
+//                    case let .failure(error):
+//                        continuation.resume(returning: nil)
+//                    }
+//                    cancellable?.cancel()
+//                } receiveValue: { value in
+//                    if value == target {
+//                        finishedWithoutValue = false
+//                        continuation.resume(returning: value)
+//                    }
+//                }
+//        }
+//    }
     
 }
 
