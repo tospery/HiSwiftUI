@@ -8,8 +8,7 @@
 import Foundation
 import UIKit
 
-public protocol AlertActionType {
-    var title: String? { get }
+public protocol AlertActionType: CustomStringConvertible {
     var style: UIAlertAction.Style { get }
 }
 

@@ -50,7 +50,7 @@ public struct TileCell: View {
                         } else {
                             Text(model.title!.localizedStringKey)
                                 .font(.system(size: 15))
-                                .foregroundStyle(Color.title)
+                                .foregroundStyle(Color.primary.opacity(0.8))
                         }
                         Spacer()
                         // detail
@@ -59,7 +59,7 @@ public struct TileCell: View {
                         } else {
                             Text(model.detail!)
                                 .font(.system(size: 14))
-                                .foregroundStyle(Color.headline)
+                                .foregroundStyle(Color.primary.opacity(0.8))
                         }
                         // indicator
                         if !(model.indicated ?? false) {

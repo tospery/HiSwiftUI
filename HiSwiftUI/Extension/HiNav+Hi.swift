@@ -43,14 +43,9 @@ extension HiNav {
         if message.isNotEmpty {
             parameters[Parameter.message] = message
         }
-        var actionsValue = ""
-        for action in actions {
-            guard let title = action.title, title.isNotEmpty else { continue }
-            actionsValue += "\(title),"
-        }
-        if actionsValue.isNotEmpty {
-            actionsValue = actionsValue.removingSuffix(",")
-            parameters[Parameter.actions] = actionsValue
+        var jsonString = actions.map { $0.description }.filter { $0.isNotEmpty }.jsonString() ?? ""
+        if jsonString.isNotEmpty {
+            parameters[Parameter.actions] = jsonString
         }
         return urlScheme(host: .alert, parameters: parameters)
     }
@@ -64,14 +59,9 @@ extension HiNav {
         if message.isNotEmpty {
             parameters[Parameter.message] = message
         }
-        var actionsValue = ""
-        for action in actions {
-            guard let title = action.title, title.isNotEmpty else { continue }
-            actionsValue += "\(title),"
-        }
-        if actionsValue.isNotEmpty {
-            actionsValue = actionsValue.removingSuffix(",")
-            parameters[Parameter.actions] = actionsValue
+        var jsonString = actions.map { $0.description }.filter { $0.isNotEmpty }.jsonString() ?? ""
+        if jsonString.isNotEmpty {
+            parameters[Parameter.actions] = jsonString
         }
         return urlScheme(host: .sheet, parameters: parameters)
     }

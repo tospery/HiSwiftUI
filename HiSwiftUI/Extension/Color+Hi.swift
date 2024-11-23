@@ -8,23 +8,15 @@
 import SwiftUI
 import UIKit
 
+/// 客户化的颜色采用opacity方法来实现
 public extension Color {
     public var uiColor: UIColor { .init(self) }
     
-    static var background: Color { .white }
-    static var foreground: Color { .primary }
-    
-    static var surface: Color { Color.init(uiColor: .init(hex: 0xF4F4F4)!) }
-    static var container: Color { Color.init(uiColor: .init(hex: 0xD1D1D1)!) }
-    
-    static var separator: Color { Color.init(uiColor: .init(hex: 0xE0E0E0)!) }
-    static var indicator: Color { Color.init(uiColor: .init(hex: 0xE0E0E0)!) }
-    
-    static var title: Color { Color.init(uiColor: .init(hex: 0x333333)!) }
-    static var headline: Color { Color.init(uiColor: .init(hex: 0x666666)!) }
-    static var body: Color { Color.init(uiColor: .init(hex: 0x888888)!) }
-    static var footnote: Color { Color.init(uiColor: .init(hex: 0xCCCCCC)!) }
-    static var caption: Color { Color.init(uiColor: .init(hex: 0xD3D3D3)!) }
+    static var separator: Color { UIColor.separator.swiftUIColor }
+    static var placeholder: Color { UIColor.placeholderText.swiftUIColor }
+    static var surface: Color { UIColor.quaternarySystemFill.swiftUIColor }
+    static var container: Color { UIColor.systemFill.swiftUIColor }
+    static var background: Color { UIColor.systemBackground.swiftUIColor }
 }
 
 public extension UIColor {

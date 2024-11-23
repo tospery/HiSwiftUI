@@ -53,7 +53,7 @@ public struct TextEditorCell: View {
                     Spacer()
                     Text("\(text.count)/\(limit)")
                         .font(.system(size: 12))
-                        .foregroundStyle(Color.body)
+                        .foregroundStyle(Color.primary.opacity(0.8))
                 }
             } else {
                 EmptyView()
