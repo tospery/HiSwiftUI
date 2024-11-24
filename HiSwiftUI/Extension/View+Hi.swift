@@ -17,4 +17,11 @@ extension View {
         String(describing: type(of: self))
     }
     
+    public func refreshableIf(
+        _ isRefreshable: Bool,
+        action: @MainActor @Sendable @escaping () async -> Void
+    ) -> some View {
+        self.modifier(RefreshableModifier(isRefreshable: isRefreshable, action: action))
+    }
+    
 }

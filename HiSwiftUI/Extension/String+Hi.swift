@@ -23,6 +23,16 @@ public extension String {
         return true
     }
     
+    var routeHost: String? {
+        self.url?.host()
+    }
+    
+    var routePath: String? {
+        guard self.pathComponents.count >= 3 else {
+            return nil
+        }
+        return self.pathComponents[2]
+    }
 //    static func deepLink(
 //        host: String,
 //        path: String? = nil,
