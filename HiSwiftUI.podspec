@@ -21,10 +21,7 @@ Pod::Spec.new do |s|
   s.dependency 'HiResource', '~> 1.0'
   s.dependency 'CombineExt', '~> 1.0'
   s.dependency 'SwifterSwift', '~> 6.0'
-  s.dependency 'BonMot', '~> 6.0'
   s.dependency 'Kingfisher', '~> 7.0'
-  s.dependency 'DZNEmptyDataSet', '~> 1.0'
-  s.dependency 'TTTAttributedLabel', '~> 2.0'
-  s.dependency 'MJRefresh', '~> 3.0'
+  s.dependency 'SwiftUIKit-Hi', '~> 5.0.0'
   
 end
