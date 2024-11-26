@@ -70,18 +70,19 @@ public struct TileCell: View {
                         if !(model.indicated ?? false) {
                             EmptyView()
                         } else {
-                            // Image(systemSymbol: .chevronRight)
-                            Image(uiImage: .indicator)
-                                .font(.system(size: 13))
+                            Image(systemName: "chevron.right")
+//                            Image(uiImage: .indicator)
+//                                .renderingMode(.template)
+                                .font(.system(size: 14))
                                 .foregroundStyle(Color.accentColor)
                         }
                         // checked
                         if !(model.checked ?? false) {
                             EmptyView()
                         } else {
-                            // Image(systemSymbol: .checkmark)
-                            Image(uiImage: .checked)
-                                .font(.system(size: 13))
+                            Image(systemName: "checkmark")
+                            // Image(uiImage: .checked)
+                                .font(.system(size: 14))
                                 .foregroundStyle(Color.accentColor)
                         }
                     }
