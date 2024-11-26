@@ -14,7 +14,12 @@ public struct TileCell: View {
     let model: Tile
     let action: (() -> Void)?
     
-    public init(_ model: Tile, action: (() -> Void)? = nil) {
+    public init(_ model: Tile) {
+        self.model = model
+        self.action = nil
+    }
+    
+    public init(_ model: Tile, action: @escaping () -> Void) {
         self.model = model
         self.action = action
     }

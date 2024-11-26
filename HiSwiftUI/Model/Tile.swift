@@ -74,6 +74,18 @@ public struct Tile: ModelType {
         kind            <- (map["kind"], StringTransform.shared)
     }
     
+    public func copyWith(title: String?) -> Tile {
+        var myTile = self
+        myTile.title = title
+        return myTile
+    }
+    
+    public func copyWith(detail: String?) -> Tile {
+        var myTile = self
+        myTile.detail = detail
+        return myTile
+    }
+    
     public static func == (lhs: Self, rhs: Self) -> Bool {
         lhs.id == rhs.id &&
         lhs.height == rhs.height &&
