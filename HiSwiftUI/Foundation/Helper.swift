@@ -7,7 +7,10 @@
 
 import SwiftUI
 import Combine
+import HiBase
 import HiCore
+
+public let profileService = CurrentValueSubject<(any ProfileType)?, Never>(nil)
 
 public func logEnvironment() {
     logger.print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.path ?? "", module: .hiSwiftUI)

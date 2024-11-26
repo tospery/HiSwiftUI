@@ -74,6 +74,7 @@ public protocol HiNavCompatible {
     func allowedPaths(host: HiNav.Host) -> [HiNav.Path]
     
     // user-login
+    func isLogined() -> Bool
     func needLogin(host: HiNav.Host, path: HiNav.Path?) -> Bool
     
     // state
@@ -86,7 +87,6 @@ final public class HiNav {
     public typealias Host = String
     public typealias Path = String
     
-    public var isLogined = false
     public static var shared = HiNav()
     
     public func urlScheme(host: Host, path: Path? = nil, parameters: [String: String]? = nil) -> String {
