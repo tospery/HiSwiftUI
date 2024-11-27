@@ -86,6 +86,12 @@ public struct Tile: ModelType {
         return myTile
     }
     
+    public func copyWith(checked: Bool?) -> Tile {
+        var myTile = self
+        myTile.checked = checked
+        return myTile
+    }
+    
     public static func == (lhs: Self, rhs: Self) -> Bool {
         lhs.id == rhs.id &&
         lhs.height == rhs.height &&
