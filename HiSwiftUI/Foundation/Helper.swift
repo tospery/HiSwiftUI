@@ -9,18 +9,17 @@ import SwiftUI
 import Combine
 import HiBase
 import HiCore
-
-public let profileService = CurrentValueSubject<(any ProfileType)?, Never>(nil)
+import HiLogger
 
 public func logEnvironment() {
-    logger.print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.path ?? "", module: .hiSwiftUI)
-    logger.print("运行环境: \(UIApplication.shared.inferredEnvironment)", module: .hiSwiftUI)
-    logger.print("设备型号: \(UIDevice.current.modelName)", module: .hiSwiftUI)
-    logger.print("硬件标识: \(UIDevice.current.uuid)", module: .hiSwiftUI)
-    logger.print("系统版本: \(UIDevice.current.systemVersion)", module: .hiSwiftUI)
-    logger.print("屏幕尺寸: \(UIScreen.main.bounds.size)", module: .hiSwiftUI)
-    logger.print("安全区域: \(safeArea)", module: .hiSwiftUI)
-    logger.print("状态栏(\(statusBarHeightConstant))|导航栏(\(navigationBarHeight))|标签栏(\(tabBarHeight))", module: .hiSwiftUI)
+    log(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.path ?? "", module: Module.hiSwiftUI)
+    log("运行环境: \(UIApplication.shared.inferredEnvironment)", module: Module.hiSwiftUI)
+    log("设备型号: \(UIDevice.current.modelName)", module: Module.hiSwiftUI)
+    log("硬件标识: \(UIDevice.current.uuid)", module: Module.hiSwiftUI)
+    log("系统版本: \(UIDevice.current.systemVersion)", module: Module.hiSwiftUI)
+    log("屏幕尺寸: \(UIScreen.main.bounds.size)", module: Module.hiSwiftUI)
+    log("安全区域: \(safeArea)", module: Module.hiSwiftUI)
+    log("状态栏(\(statusBarHeightConstant))|导航栏(\(navigationBarHeight))|标签栏(\(tabBarHeight))", module: Module.hiSwiftUI)
 }
 
 public func convertToResult<Output>(

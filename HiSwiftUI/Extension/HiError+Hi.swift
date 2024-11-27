@@ -19,6 +19,7 @@ import HiCore
 import HiNet
 import HiBase
 import HiResource
+import HiLogger
 
 extension HiError {
 
@@ -36,7 +37,7 @@ extension HiError {
 
 extension NSError: HiErrorCompatible {
     public var hiError: HiError {
-        logger.print("NSError转换-> \(self.domain), \(self.code), \(self.localizedDescription)", module: .hiSwiftUI)
+        log("NSError转换-> \(self.domain), \(self.code), \(self.localizedDescription)", module: Module.hiSwiftUI)
         
         var message = self.localizedDescription
         if let msg1 = self.userInfo["message"] as? String, msg1.isNotEmpty {

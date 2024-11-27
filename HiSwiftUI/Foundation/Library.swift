@@ -9,6 +9,7 @@ import Foundation
 import SwiftyBeaver
 import HiCore
 import HiNet
+import HiLogger
 
 public protocol LibraryCompatible {
     func mySetup()
@@ -30,8 +31,9 @@ final public class Library {
     }
     
     public func basic() {
-        logType.addDestination(ConsoleDestination.init())
-        logType.addDestination(FileDestination.init())
+//        logType.addDestination(ConsoleDestination.init())
+//        logType.addDestination(FileDestination.init())
+        logger.register(provider: SwiftyBeaverProvider())
         ReachPublisher.shared.start()
     }
     
