@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 import HiBase
 import HiCore
-import HiLogger
+import HiLog
 
 public func logEnvironment() {
     log(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.path ?? "", module: Module.hiSwiftUI)

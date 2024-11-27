@@ -19,7 +19,7 @@ import HiCore
 import HiNet
 import HiBase
 import HiResource
-import HiLogger
+import HiLog
 
 extension HiError {
 

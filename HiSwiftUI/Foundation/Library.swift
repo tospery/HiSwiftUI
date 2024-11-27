@@ -9,7 +9,7 @@ import Foundation
 import SwiftyBeaver
 import HiCore
 import HiNet
-import HiLogger
+import HiLog
 
 public protocol LibraryCompatible {
     func mySetup()
