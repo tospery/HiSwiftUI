@@ -130,4 +130,5 @@ extension HiNav.Path {
     public static var list: HiNav.Path { "list" }
     public static var detail: HiNav.Path { "detail" }
     public static var history: HiNav.Path { "history" }
+    public static var options: HiNav.Path { "options" }
 }
