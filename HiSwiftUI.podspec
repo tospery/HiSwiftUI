@@ -22,6 +22,7 @@ Pod::Spec.new do |s|
   s.dependency 'CombineExt', '~> 1.0'
   s.dependency 'SwifterSwift', '~> 6.0'
   s.dependency 'Kingfisher', '~> 7.0'
+  s.dependency 'Refresh-Hi', '~> 0.2'
   s.dependency 'SwiftUIKit-Hi', '~> 5.0.0'
   
 end
