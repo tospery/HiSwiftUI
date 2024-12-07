@@ -17,9 +17,15 @@ public struct SimpleHeaderIdleView: View {
     
     public var body: some View {
         VStack {
-            Text("Header.Idle.Text")
-                .font(.callout)
-                .foregroundStyle(Color.primary)
+            if progress >= 1.5 {
+                Text("Header.Pulling.Text")
+                    .font(.callout)
+                    .foregroundStyle(Color.primary)
+            } else {
+                Text("Header.Idle.Text")
+                    .font(.callout)
+                    .foregroundStyle(Color.primary)
+            }
         }
         .frame(height: 32)
     }
