@@ -11,7 +11,7 @@ import HiCore
 import SwiftUI
 
 public protocol AppearanceCompatible {
-    func myConfig()
+    func myConfig(_ color: UIColor)
 }
 
 final public class Appearance {
@@ -21,15 +21,17 @@ final public class Appearance {
     public init() {
     }
     
-    public func config() {
+    public func config(_ color: UIColor) {
         if let compatible = self as? AppearanceCompatible {
-            compatible.myConfig()
+            compatible.myConfig(color)
         } else {
-            self.basic()
+            self.basic(color)
         }
     }
     
-    public func basic() {
+    public func basic(_ color: UIColor) {
+        // Window
+        UIWindow.appearance().tintColor = color
         // NavBar
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.configureWithOpaqueBackground()
@@ -43,7 +45,7 @@ final public class Appearance {
         UINavigationBar.appearance().standardAppearance = navigationBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
         UINavigationBar.appearance().compactAppearance = navigationBarAppearance
-        UINavigationBar.appearance().tintColor = Color.accentColor.uiColor
+        UINavigationBar.appearance().tintColor = color
         UINavigationBar.appearance().barTintColor = Color.secondary.uiColor
         
         // TabBar
@@ -52,7 +54,7 @@ final public class Appearance {
         tabBarAppearance.backgroundColor = .systemBackground
         UITabBar.appearance().standardAppearance = tabBarAppearance
         UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
-        UITabBar.appearance().tintColor = Color.accentColor.uiColor
+        UITabBar.appearance().tintColor = color
         UITabBar.appearance().unselectedItemTintColor = Color.secondary.uiColor
         
         // TableView
