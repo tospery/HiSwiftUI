@@ -28,10 +28,8 @@ public extension String {
     }
     
     var routePath: String? {
-        guard self.pathComponents.count >= 3 else {
-            return nil
-        }
-        return self.pathComponents[2]
+        guard let path = self.url?.path() else { return nil }
+        return path.removingPrefix("/").removingSuffix("/")
     }
 //    static func deepLink(
 //        host: String,
