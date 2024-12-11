@@ -14,7 +14,6 @@ public struct TextCell: View {
     let alignment: HorizontalAlignment
     var attributedText: AttributedString
     
-    
     public init(
         _ attributedText: AttributedString,
         alignment: HorizontalAlignment = .leading
