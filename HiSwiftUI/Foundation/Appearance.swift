@@ -58,8 +58,9 @@ final public class Appearance {
         UITabBar.appearance().unselectedItemTintColor = Color.secondary.uiColor
         
         // TableView
-        //        UITableView.appearance().sectionHeaderTopPadding = 0
-        //        UITableView.appearance().rowHeight = 20
+        // UITableView.appearance().sectionHeaderTopPadding = 0
+        // UITableView.appearance().rowHeight = 20
+        // UITableView.appearance().separatorColor = UIColor.orange
     }
     
 }
