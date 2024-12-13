@@ -55,7 +55,7 @@ public struct TileCell: View {
                             if model.title?.isEmpty ?? true {
                                 EmptyView()
                             } else {
-                                Text(model.title!.localizedStringKey)
+                                text()
                                     .font(.system(size: 15))
                                     .foregroundStyle(Color.primary.opacity(0.8))
                             }
@@ -98,9 +98,23 @@ public struct TileCell: View {
                         }
                     }
                 }
-                .frame(height: 40)
+                .frame(height: 44)
                 .background(Color.background)
             }
         }
     }
+    
+    func text() -> Text {
+        let string = model.title ?? ""
+        if model.autoLinked ?? false {
+            return Text(LocalizedStringKey(string))
+        }
+        let resource = LocalizedStringResource.init(stringLiteral: string)
+        var text = AttributedString.init(localized: resource)
+        text.font = .systemFont(ofSize: 15)
+        text.foregroundColor = .primary.opacity(0.8)
+        text.link = nil
+        return Text(text)
+    }
+    
 }

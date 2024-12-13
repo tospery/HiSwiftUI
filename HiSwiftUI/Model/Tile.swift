@@ -16,6 +16,7 @@ public struct Tile: ModelType {
     public var separated: Bool? = true
     public var indicated: Bool? = false
     public var checked: Bool? = false
+    public var autoLinked: Bool? = true
     public var height: Double?
     public var icon: String?
     public var title: String?
@@ -39,6 +40,7 @@ public struct Tile: ModelType {
         separated: Bool? = true,
         indicated: Bool? = false,
         checked: Bool? = false,
+        autoLinked: Bool? = true,
         height: Double? = nil,
         color: String? = nil,
         tintColor: String? = nil,
@@ -52,6 +54,7 @@ public struct Tile: ModelType {
         self.indicated = indicated
         self.separated = separated
         self.checked = checked
+        self.autoLinked = autoLinked
         self.height = height
         self.color = color
         self.tintColor = tintColor
@@ -70,6 +73,7 @@ public struct Tile: ModelType {
         indicated       <- (map["indicated"], BoolTransform.shared)
         separated       <- (map["separated"], BoolTransform.shared)
         checked         <- (map["checked"], BoolTransform.shared)
+        autoLinked      <- (map["autoLinked"], BoolTransform.shared)
         target          <- (map["target"], StringTransform.shared)
         kind            <- (map["kind"], StringTransform.shared)
     }
@@ -103,6 +107,7 @@ public struct Tile: ModelType {
         lhs.indicated == rhs.indicated &&
         lhs.separated == rhs.separated &&
         lhs.checked == rhs.checked &&
+        lhs.autoLinked == rhs.autoLinked &&
         lhs.target == rhs.target &&
         lhs.kind == rhs.kind
     }
