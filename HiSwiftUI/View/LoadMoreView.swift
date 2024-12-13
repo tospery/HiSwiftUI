@@ -36,8 +36,6 @@ public struct LoadMoreView: View {
             Spacer()
         }
         .frame(height: 40)
-        .listRowInsets(.zero)
-        .listRowSeparator(.hidden, edges: .all)
         .background(Color.surface)
     }
     

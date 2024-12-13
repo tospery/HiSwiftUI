@@ -58,7 +58,6 @@ public struct TextFieldCell: View {
                     isFocused = focused
                 }
         }
-        .listRowSeparator(.hidden, edges: .all)
     }
 }
 

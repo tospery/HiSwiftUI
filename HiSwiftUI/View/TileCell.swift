@@ -91,6 +91,7 @@ public struct TileCell: View {
                         if model.separated ?? false {
                             Divider()
                                 .frame(height: pixelOne)
+                                .background(Color.gray.opacity(0.02))
                                 .padding(.leading)
                         } else {
                             EmptyView()

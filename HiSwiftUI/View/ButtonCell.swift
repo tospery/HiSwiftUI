@@ -32,7 +32,6 @@ public struct ButtonCell: View {
                     }
                     .padding(.vertical, 2)
                 }
-                .listRowSeparator(.hidden, edges: .all)
             } else {
                 HStack(spacing: 0) {
                     Spacer()
@@ -50,8 +49,6 @@ public struct ButtonCell: View {
                     Spacer()
                         .frame(width: 20)
                 }
-                .listRowInsets(.zero)
-                .listRowSeparator(.hidden, edges: .all)
                 .padding(.vertical, 0)
                 .background(Color.surface)
             }

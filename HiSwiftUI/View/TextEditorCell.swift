@@ -59,7 +59,6 @@ public struct TextEditorCell: View {
                 EmptyView()
             }
         }
-        .listRowSeparator(.hidden, edges: .all)
     }
     
 }

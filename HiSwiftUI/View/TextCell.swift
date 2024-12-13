@@ -29,8 +29,6 @@ public struct TextCell: View {
                 .multilineTextAlignment(.trailing)
                 .padding(.horizontal, 15)
         }
-        .listRowInsets(.zero)
-        .listRowSeparator(.hidden, edges: .all)
         .background(Color.surface)
     }
     
