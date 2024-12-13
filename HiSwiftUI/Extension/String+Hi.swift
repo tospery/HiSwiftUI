@@ -10,12 +10,12 @@ import SwifterSwift
 
 public extension String {
     
-    var isValidInternalURLScheme: Bool {
+    var isValidInternalUrl: Bool {
         guard let url = self.url else { return false }
         return url.scheme == UIApplication.shared.appScheme
     }
     
-    var isValidExternalURLScheme: Bool {
+    var isValidExternalUrl: Bool {
         guard let scheme = self.url?.scheme else { return false }
         if scheme == UIApplication.shared.appScheme || scheme == "http" || scheme == "https" {
             return false

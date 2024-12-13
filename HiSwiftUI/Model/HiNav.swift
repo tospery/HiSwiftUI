@@ -58,8 +58,7 @@ public enum OpenType: Int {
         HiNav.Host.alert,
         HiNav.Host.sheet,
         HiNav.Host.popup,
-        HiNav.Host.login,
-        HiNav.Host.home
+        HiNav.Host.login
     ]
 }
 
@@ -122,7 +121,7 @@ extension HiNav.Host {
     public static var dashboard: HiNav.Host { "dashboard" }
     public static var personal: HiNav.Host { "personal" }
     
-    public static var home: HiNav.Host { "home" }
+    public static var web: HiNav.Host { "web" }
 }
 
 extension HiNav.Path {
