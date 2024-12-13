@@ -40,7 +40,7 @@ final public class Appearance {
         backButtonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.clear]
         navigationBarAppearance.backButtonAppearance = backButtonAppearance
         let backIndicatorImage = UIImage.back.withRenderingMode(.alwaysTemplate)
-        // .withTintColor(Color.accentColor.uiColor, renderingMode: .alwaysTemplate)
+            // .withTintColor(Color.accentColor.uiColor, renderingMode: .alwaysTemplate)
         navigationBarAppearance.setBackIndicatorImage(backIndicatorImage, transitionMaskImage: backIndicatorImage)
         UINavigationBar.appearance().standardAppearance = navigationBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance

@@ -51,6 +51,17 @@ public extension Publisher {
         }
         return .failure(HiError.unknown)
     }
+    
+    func asOutput() async -> Output? {
+        do {
+            for try await value in self.values {
+                return value
+            }
+        } catch {
+            return nil
+        }
+        return nil
+    }
 
     func wait(matching targetValue: Output) async -> Output? where Output: Equatable {
         await withCheckedContinuation { continuation in
