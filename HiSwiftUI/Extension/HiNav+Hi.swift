@@ -13,29 +13,29 @@ import HiBase
 extension HiNav {
     
     // MARK: - back
-    public func backURLScheme(_ type: BackType? = nil) -> String {
+    public func backURLString(_ type: BackType? = nil) -> String {
         var parameters = [String: String].init()
         if type != nil {
             parameters[Parameter.type] = type!.rawValue.string
         }
-        return urlScheme(host: .back, parameters: parameters)
+        return urlString(host: .back, parameters: parameters)
     }
     
     // MARK: - toast
-    public func toastActivityURLScheme(_ active: Bool) -> String {
-        urlScheme(host: .toast, parameters: [
+    public func toastActivityURLString(_ active: Bool) -> String {
+        urlString(host: .toast, parameters: [
             Parameter.active: active.string
         ])
     }
     
-    public func toastMessageURLScheme(_ message: String, active: Bool? = nil) -> String {
-        urlScheme(host: .toast, parameters: [
+    public func toastMessageURLString(_ message: String, active: Bool? = nil) -> String {
+        urlString(host: .toast, parameters: [
             Parameter.message: message
         ])
     }
     
     // MARK: - alert
-    public func alertURLScheme(_ title: String, _ message: String, _ actions: [AlertActionType]) -> String {
+    public func alertURLString(_ title: String, _ message: String, _ actions: [AlertActionType]) -> String {
         var parameters = [String: String].init()
         if title.isNotEmpty {
             parameters[Parameter.title] = title
@@ -47,11 +47,11 @@ extension HiNav {
         if jsonString.isNotEmpty {
             parameters[Parameter.actions] = jsonString
         }
-        return urlScheme(host: .alert, parameters: parameters)
+        return urlString(host: .alert, parameters: parameters)
     }
     
     // MARK: - sheet
-    public func sheetURLScheme(_ title: String, _ message: String, _ actions: [AlertActionType]) -> String {
+    public func sheetURLString(_ title: String, _ message: String, _ actions: [AlertActionType]) -> String {
         var parameters = [String: String].init()
         if title.isNotEmpty {
             parameters[Parameter.title] = title
@@ -63,7 +63,7 @@ extension HiNav {
         if jsonString.isNotEmpty {
             parameters[Parameter.actions] = jsonString
         }
-        return urlScheme(host: .sheet, parameters: parameters)
+        return urlString(host: .sheet, parameters: parameters)
     }
     
     // MARK: - login

@@ -88,7 +88,7 @@ final public class HiNav {
     
     public static var shared = HiNav()
     
-    public func urlScheme(host: Host, path: Path? = nil, parameters: [String: String]? = nil) -> String {
+    public func urlString(host: Host, path: Path? = nil, parameters: [String: String]? = nil) -> String {
         var url = "\(UIApplication.shared.appScheme)://\(host)".url!
         if let path = path {
             url.appendPathComponent(path)

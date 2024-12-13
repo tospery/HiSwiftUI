@@ -36,7 +36,7 @@ public extension String {
 //        path: String? = nil,
 //        parameters: [String: String]? = nil
 //    ) -> String {
-//        var url = "\(UIApplication.shared.urlScheme)://\(host)".url!
+//        var url = "\(UIApplication.shared.urlString)://\(host)".url!
 //        if let path = path {
 //            url.appendPathComponent(path)
 //        }
