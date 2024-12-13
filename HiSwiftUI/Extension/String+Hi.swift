@@ -23,14 +23,15 @@ public extension String {
         return true
     }
     
-    var routeHost: String? {
-        self.url?.host()
+    var routeHost: String {
+        self.url?.host() ?? ""
     }
     
-    var routePath: String? {
-        guard let path = self.url?.path() else { return nil }
+    var routePath: String {
+        guard let path = self.url?.path() else { return "" }
         return path.removingPrefix("/").removingSuffix("/")
     }
+    
 //    static func deepLink(
 //        host: String,
 //        path: String? = nil,

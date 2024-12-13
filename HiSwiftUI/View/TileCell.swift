@@ -28,7 +28,8 @@ public struct TileCell: View {
     public var body: some View {
         Group {
             if model.isSpace {
-                Color.surface
+                Rectangle()
+                    .fill(Color.clear)
                     .frame(maxWidth: .infinity)
                     .frame(height: model.height ?? 12)
             } else {
@@ -65,8 +66,8 @@ public struct TileCell: View {
                                 EmptyView()
                             } else {
                                 Text(model.detail!)
-                                    .font(.system(size: 14))
-                                    .foregroundStyle(Color.primary.opacity(0.8))
+                                    .font(.system(size: 13))
+                                    .foregroundStyle(Color.gray)
                             }
                             // indicator
                             if !(model.indicated ?? false) {

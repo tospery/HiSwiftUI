@@ -12,11 +12,11 @@ import HiCore
 
 public struct Tile: ModelType {
     
-    public var id = "space"
+    public var id = ""
     public var separated: Bool? = true
     public var indicated: Bool? = false
     public var checked: Bool? = false
-    public var autoLinked: Bool? = true
+    public var autoLinked: Bool? = false
     public var height: Double?
     public var icon: String?
     public var title: String?
@@ -26,21 +26,21 @@ public struct Tile: ModelType {
     public var target: String?
     public var kind: String?
     
-    public var isSpace: Bool { id == "space" }
+    public var isSpace: Bool { id.hasPrefix("space-") }
 
     public init() { }
 
     public init?(map: Map) { }
     
     public init(
-        id: String = "space",
+        id: String = "",
         icon: String? = nil,
         title: String? = nil,
         detail: String? = nil,
         separated: Bool? = true,
         indicated: Bool? = false,
         checked: Bool? = false,
-        autoLinked: Bool? = true,
+        autoLinked: Bool? = false,
         height: Double? = nil,
         color: String? = nil,
         tintColor: String? = nil,
@@ -78,6 +78,12 @@ public struct Tile: ModelType {
         kind            <- (map["kind"], StringTransform.shared)
     }
     
+    public func copyWith(id: String) -> Tile {
+        var myTile = self
+        myTile.id = id
+        return myTile
+    }
+    
     public func copyWith(title: String?) -> Tile {
         var myTile = self
         myTile.title = title
@@ -112,5 +118,12 @@ public struct Tile: ModelType {
         lhs.kind == rhs.kind
     }
 
+    public static func space(height: Double? = nil) -> Tile {
+        .init(
+            id: "space-\(UUID().uuidString)",
+            height: height
+        )
+    }
+    
 }
 
