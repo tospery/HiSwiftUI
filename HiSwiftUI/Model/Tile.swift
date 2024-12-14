@@ -118,10 +118,14 @@ public struct Tile: ModelType {
         lhs.kind == rhs.kind
     }
 
-    public static func space(height: Double? = nil) -> Tile {
+    public static func space(
+        height: Double? = nil,
+        color: String? = nil
+    ) -> Tile {
         .init(
             id: "space-\(UUID().uuidString)",
-            height: height
+            height: height,
+            color: color
         )
     }
     

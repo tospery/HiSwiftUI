@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUIKit_Hi
 import HiResource
 import HiCore
 import HiSwiftUI
@@ -29,7 +30,7 @@ public struct TileCell: View {
         Group {
             if model.isSpace {
                 Rectangle()
-                    .fill(Color.clear)
+                    .fill(model.color?.color ?? Color.clear)
                     .frame(maxWidth: .infinity)
                     .frame(height: model.height ?? 12)
             } else {

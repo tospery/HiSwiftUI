@@ -5,8 +5,9 @@
 //  Created by 杨建祥 on 2024/11/7.
 //
 
-import Foundation
+import SwiftUI
 import SwifterSwift
+import SwiftUIKit_Hi
 
 public extension String {
     
@@ -31,6 +32,8 @@ public extension String {
         guard let path = self.url?.path() else { return "" }
         return path.removingPrefix("/").removingSuffix("/")
     }
+    
+    var color: Color? { .init(hex: self) }
     
 //    static func deepLink(
 //        host: String,
