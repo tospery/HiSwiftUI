@@ -11,6 +11,39 @@ import SwiftUIKit_Hi
 
 public extension String {
     
+    var apiURLString: String? {
+        if self.hasPrefix(UIApplication.shared.baseApiUrl) {
+            return self
+        }
+        let app = "\(UIApplication.shared.appScheme)://"
+        let web = "\(UIApplication.shared.baseWebUrl)/"
+        var ret = self.removingPrefix(app)
+        ret = ret.removingPrefix(web)
+        return "\(UIApplication.shared.baseApiUrl)/\(ret)"
+    }
+    
+    var webURLString: String? {
+        if self.hasPrefix(UIApplication.shared.baseWebUrl) {
+            return self
+        }
+        let app = "\(UIApplication.shared.appScheme)://"
+        let api = "\(UIApplication.shared.baseApiUrl)/"
+        var ret = self.removingPrefix(app)
+        ret = ret.removingPrefix(api)
+        return "\(UIApplication.shared.baseWebUrl)/\(ret)"
+    }
+    
+    var appURLString: String? {
+        if self.hasPrefix("\(UIApplication.shared.appScheme)://") {
+            return self
+        }
+        let web = "\(UIApplication.shared.baseWebUrl)/"
+        let api = "\(UIApplication.shared.baseApiUrl)/"
+        var ret = self.removingPrefix(web)
+        ret = ret.removingPrefix(api)
+        return "\(UIApplication.shared.appScheme)://\(ret)"
+    }
+    
     var isValidInternalUrl: Bool {
         guard let url = self.url else { return false }
         return url.scheme == UIApplication.shared.appScheme

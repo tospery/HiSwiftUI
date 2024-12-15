@@ -96,6 +96,12 @@ public struct Tile: ModelType {
         return myTile
     }
     
+    public func copyWith(target: String?) -> Tile {
+        var myTile = self
+        myTile.target = target
+        return myTile
+    }
+    
     public func copyWith(checked: Bool?) -> Tile {
         var myTile = self
         myTile.checked = checked
