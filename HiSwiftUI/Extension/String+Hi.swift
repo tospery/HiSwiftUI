@@ -11,7 +11,7 @@ import SwiftUIKit_Hi
 
 public extension String {
     
-    var apiURLString: String? {
+    var apiURLString: String {
         if self.hasPrefix(UIApplication.shared.baseApiUrl) {
             return self
         }
@@ -22,7 +22,7 @@ public extension String {
         return "\(UIApplication.shared.baseApiUrl)/\(ret)"
     }
     
-    var webURLString: String? {
+    var webURLString: String {
         if self.hasPrefix(UIApplication.shared.baseWebUrl) {
             return self
         }
@@ -33,7 +33,7 @@ public extension String {
         return "\(UIApplication.shared.baseWebUrl)/\(ret)"
     }
     
-    var appURLString: String? {
+    var appURLString: String {
         if self.hasPrefix("\(UIApplication.shared.appScheme)://") {
             return self
         }

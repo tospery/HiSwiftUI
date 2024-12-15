@@ -8,6 +8,10 @@
 import Foundation
 import SwifterSwift
 
+//https://github.com/profile转换为本地url：tinyhub://profile
+//表示的是已登陆用户详情页，但是这个叫profile用户是存在的，怎么判断是跳到profile用户页面呢？
+//采用查询参数来确定，如：https://github.com/profile?preset=false
+
 /// 导航的分类
 public enum JumpType: Int {
     /// 前进
@@ -125,9 +129,5 @@ extension HiNav.Host {
 }
 
 extension HiNav.Path {
-    public static var page: HiNav.Path { "page" }
-    public static var list: HiNav.Path { "list" }
-    public static var detail: HiNav.Path { "detail" }
-    public static var history: HiNav.Path { "history" }
-    public static var options: HiNav.Path { "options" }
+    
 }
