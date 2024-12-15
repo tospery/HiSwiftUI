@@ -8,9 +8,10 @@
 import Foundation
 import SwifterSwift
 
-//https://github.com/profile转换为本地url：tinyhub://profile
-//表示的是已登陆用户详情页，但是这个叫profile用户是存在的，怎么判断是跳到profile用户页面呢？
-//采用查询参数来确定，如：https://github.com/profile?preset=false
+//https://github.com/profile可以表示两种意思：
+//1、profile用户
+//2、当前用户详情
+//如何区分？可以通过native查询参数来确定。
 
 /// 导航的分类
 public enum JumpType: Int {
