@@ -27,80 +27,78 @@ public struct TileCell: View {
     }
     
     public var body: some View {
-        Group {
-            if model.isSpace {
-                Rectangle()
-                    .fill(model.color?.color ?? Color.clear)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: model.height ?? 12)
-            } else {
-                Button {
-                    action?()
-                } label: {
-                    VStack(spacing: 0) {
-                        Spacer()
-                        HStack {
-                            // icon
-                            if model.icon?.isEmpty ?? true {
-                                EmptyView()
+        if model.isSpace {
+            Rectangle()
+                .fill(model.color?.uiColor?.swiftUIColor ?? Color.clear)
+                .frame(maxWidth: .infinity)
+                .frame(height: model.height ?? 12)
+        } else {
+            Button {
+                action?()
+            } label: {
+                VStack(spacing: 0) {
+                    Spacer()
+                    HStack {
+                        // icon
+                        if model.icon?.isEmpty ?? true {
+                            EmptyView()
+                        } else {
+                            if model.icon!.hasSuffix("_icon"), let uiImage = UIImage(named: model.icon!) {
+                                Image(uiImage: uiImage)
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
+                                    .padding(.leading)
                             } else {
-                                if model.icon!.hasSuffix("_icon"), let uiImage = UIImage(named: model.icon!) {
-                                    Image(uiImage: uiImage)
-                                        .resizable()
-                                        .frame(width: 20, height: 20)
-                                        .padding(.leading)
-                                } else {
-                                    EmptyView()
-                                }
-                            }
-                            // title
-                            if model.title?.isEmpty ?? true {
                                 EmptyView()
-                            } else {
-                                text()
-                                    .font(.system(size: 15))
-                                    .foregroundStyle(Color.primary.opacity(0.8))
-                            }
-                            Spacer()
-                            // detail
-                            if model.detail?.isEmpty ?? true {
-                                EmptyView()
-                            } else {
-                                Text(model.detail!)
-                                    .font(.system(size: 13))
-                                    .foregroundStyle(Color.gray)
-                            }
-                            // indicator
-                            if !(model.indicated ?? false) {
-                                EmptyView()
-                            } else {
-                                Image(systemName: "chevron.right")
-                                    .font(.system(size: 14))
-                                    .foregroundStyle(Color.accentColor)
-                                    .padding(.trailing)
-                            }
-                            // checked
-                            if !(model.checked ?? false) {
-                                EmptyView()
-                            } else {
-                                Image(systemName: "checkmark")
-                                    .font(.system(size: 14))
-                                    .foregroundStyle(Color.accentColor)
-                                    .padding(.trailing)
                             }
                         }
-                        Spacer()
-                        if model.separated ?? false {
-                            Separator()
-                                .padding(.leading)
-                        } else {
+                        // title
+                        if model.title?.isEmpty ?? true {
                             EmptyView()
+                        } else {
+                            text()
+                                .font(.system(size: 15))
+                                .foregroundStyle(Color.primary.opacity(0.8))
+                        }
+                        Spacer()
+                        // detail
+                        if model.detail?.isEmpty ?? true {
+                            EmptyView()
+                        } else {
+                            Text(model.detail!)
+                                .font(.system(size: 13))
+                                .foregroundStyle(Color.gray)
+                        }
+                        // indicator
+                        if !(model.indicated ?? false) {
+                            EmptyView()
+                        } else {
+                            Image(systemName: "chevron.right")
+                                .font(.system(size: 14))
+                                .foregroundStyle(Color.accentColor)
+                                .padding(.trailing)
+                        }
+                        // checked
+                        if !(model.checked ?? false) {
+                            EmptyView()
+                        } else {
+                            Image(systemName: "checkmark")
+                                .font(.system(size: 14))
+                                .foregroundStyle(Color.accentColor)
+                                .padding(.trailing)
                         }
                     }
+                    Spacer()
+                    if model.separated ?? false {
+                        Separator()
+                            .padding(.leading)
+                    } else {
+                        EmptyView()
+                    }
                 }
-                .frame(height: 44)
-                .background(Color.background)
             }
+            .frame(height: 44)
+            .background(Color.background)
         }
     }
     

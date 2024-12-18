@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import HiCore
 import SwifterSwift
 import SwiftUIKit_Hi
 
@@ -66,21 +67,6 @@ public extension String {
         return path.removingPrefix("/").removingSuffix("/")
     }
     
-    var color: Color? { .init(hex: self) }
-    
-//    static func deepLink(
-//        host: String,
-//        path: String? = nil,
-//        parameters: [String: String]? = nil
-//    ) -> String {
-//        var url = "\(UIApplication.shared.urlString)://\(host)".url!
-//        if let path = path {
-//            url.appendPathComponent(path)
-//        }
-//        if let parameters = parameters {
-//            url.appendQueryParameters(parameters)
-//        }
-//        return url.absoluteString
-//    }
+    var swiftUIColor: Color? { self.uiColor?.swiftUIColor }
     
 }
