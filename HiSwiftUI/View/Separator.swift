@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUIKit_Hi
 import HiCore
 
 public struct Separator: View {
@@ -14,7 +15,7 @@ public struct Separator: View {
     
     public var body: some View {
         Rectangle()
-            .fill(Color.separator.opacity(0.4))
+            .fill(Color.init(hex: 0xDCDCDC))
             .frame(height: pixelOne)
     }
     
