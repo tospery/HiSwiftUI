@@ -29,7 +29,7 @@ public struct TextCell: View {
                 .multilineTextAlignment(.trailing)
                 .padding(.horizontal, 15)
         }
-        .background(Color.surface)
+        .background(Color.clear)
     }
     
 }

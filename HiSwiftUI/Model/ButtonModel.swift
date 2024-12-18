@@ -10,7 +10,7 @@ import ObjectMapper
 import HiBase
 import HiCore
 
-public enum ButtonStyle: Int, Codable {
+public enum HiButtonStyle: Int, Codable {
     case plain
     case round
 }
@@ -18,7 +18,7 @@ public enum ButtonStyle: Int, Codable {
 public struct ButtonModel: ModelType {
     
     public var id = ""
-    public var style = ButtonStyle.plain
+    public var style = HiButtonStyle.plain
     public var height: Double?
     public var title: String?
     public var titleColor: String?
@@ -33,7 +33,7 @@ public struct ButtonModel: ModelType {
     
     public init(
         id: String = "button-\(UUID().uuidString)",
-        style: ButtonStyle = .plain,
+        style: HiButtonStyle = .plain,
         title: String? = nil,
         height: Double? = nil,
         titleColor: String? = nil,
@@ -55,7 +55,7 @@ public struct ButtonModel: ModelType {
 
     mutating public  func mapping(map: Map) {
         id                  <- (map["id"], StringTransform.shared)
-        style               <- (map["style"], EnumTypeCastTransform<ButtonStyle>())
+        style               <- (map["style"], EnumTypeCastTransform<HiButtonStyle>())
         enabled             <- (map["enabled"], BoolTransform.shared)
         height              <- (map["height"], DoubleTransform.shared)
         titleColor          <- (map["titleColor"], StringTransform.shared)
