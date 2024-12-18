@@ -20,38 +20,37 @@ public struct ButtonCell: View {
     }
     
     public var body: some View {
-        Group {
-            if model.style == .plain {
-                Button(action: action) {
-                    HStack {
-                        Spacer()
-                        Text((model.title ?? "").localizedStringKey)
-                            .font(.system(size: 17))
-                            .foregroundStyle(Color.accentColor)
-                        Spacer()
-                    }
-                    .padding(.vertical, 2)
-                }
-            } else {
-                HStack(spacing: 0) {
+        if model.style == .plain {
+            Button(action: action) {
+                HStack {
                     Spacer()
-                        .frame(width: 20)
-                    Button(action: action) {
-                        Text((model.title ?? "").localizedStringKey)
-                            .font(.system(size: 17))
-                            .foregroundStyle(Color.background)
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 44)
-                            .background(Color.accentColor)
-                            .clipShape(.rect(cornerRadius: 10))
-                    }
-                    .buttonStyle(.plain)
+                    Text((model.title ?? "").localizedStringKey)
+                        .font(.headline)
+                        .foregroundStyle(Color.accentColor)
                     Spacer()
-                        .frame(width: 20)
                 }
-                .padding(.vertical, 0)
-                .background(Color.surface)
+                .frame(height: 40)
+                .background(Color.background)
             }
+        } else {
+            HStack(spacing: 0) {
+                Spacer()
+                    .frame(width: 20)
+                Button(action: action) {
+                    Text((model.title ?? "").localizedStringKey)
+                        .font(.headline)
+                        .foregroundStyle(Color.background)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 44)
+                        .background(Color.accentColor)
+                        .clipShape(.rect(cornerRadius: 10))
+                }
+                .buttonStyle(.plain)
+                Spacer()
+                    .frame(width: 20)
+            }
+            .padding(.vertical, 0)
+            .background(Color.surface)
         }
     }
     

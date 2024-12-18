@@ -41,7 +41,9 @@ public struct TileCell: View {
                     HStack {
                         // icon
                         if model.icon?.isEmpty ?? true {
-                            EmptyView()
+                            Spacer()
+                                .frame(width: pixelOne)
+                                .padding(.leading)
                         } else {
                             if model.icon!.hasSuffix("_icon"), let uiImage = UIImage(named: model.icon!) {
                                 Image(uiImage: uiImage)
@@ -49,7 +51,9 @@ public struct TileCell: View {
                                     .frame(width: 20, height: 20)
                                     .padding(.leading)
                             } else {
-                                EmptyView()
+                                Spacer()
+                                    .frame(width: pixelOne)
+                                    .padding(.leading)
                             }
                         }
                         // title
@@ -109,7 +113,7 @@ public struct TileCell: View {
         }
         let resource = LocalizedStringResource.init(stringLiteral: string)
         var text = AttributedString.init(localized: resource)
-        text.font = .systemFont(ofSize: 15)
+        text.font = .system(size: 15)
         text.foregroundColor = .primary.opacity(0.8)
         text.link = nil
         return Text(text)

@@ -32,7 +32,7 @@ public struct ButtonModel: ModelType {
     public init?(map: Map) { }
     
     public init(
-        id: String = "",
+        id: String = "button-\(UUID().uuidString)",
         style: ButtonStyle = .plain,
         title: String? = nil,
         height: Double? = nil,
