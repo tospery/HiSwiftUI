@@ -36,28 +36,17 @@ public struct ButtonCell: View {
             HStack(spacing: 0) {
                 Spacer()
                     .frame(width: 20)
-                Button {
-                    if model.enabled ?? false {
-                        action()
-                    }
-                } label: {
+                Button(action: action) {
                     Text((model.title ?? "").localizedStringKey)
                         .font(.headline)
-                        .foregroundStyle(
-                            (model.enabled ?? false)
-                            ? Color.background
-                            : Color.background.opacity(0.7)
-                        )
+                        .foregroundStyle(Color.background)
                         .frame(maxWidth: .infinity)
                         .frame(height: 44)
-                        .background(
-                            (model.enabled ?? false)
-                            ? Color.accentColor
-                            : Color.accentColor.opacity(0.7)
-                        )
+                        .background(Color.accentColor)
                         .clipShape(.rect(cornerRadius: 10))
                 }
                 .buttonStyle(.plain)
+                .disabled(!(model.enabled ?? false))
                 Spacer()
                     .frame(width: 20)
             }
