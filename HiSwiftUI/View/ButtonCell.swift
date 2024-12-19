@@ -30,7 +30,7 @@ public struct ButtonCell: View {
                     Spacer()
                 }
                 .frame(height: 40)
-                .background(Color.background)
+                .background(Color.inversePrimary)
             }
         } else {
             HStack(spacing: 0) {
@@ -39,7 +39,7 @@ public struct ButtonCell: View {
                 Button(action: action) {
                     Text((model.title ?? "").localizedStringKey)
                         .font(.headline)
-                        .foregroundStyle(Color.background)
+                        .foregroundStyle(Color.inversePrimary)
                         .frame(maxWidth: .infinity)
                         .frame(height: 44)
                         .background(Color.accentColor)

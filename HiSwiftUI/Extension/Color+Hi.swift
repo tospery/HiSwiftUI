@@ -13,8 +13,7 @@ public extension Color {
     public var uiColor: UIColor { .init(self) }
     
     static var surface: Color { .init(hex: 0xF4F4F4) }
-    static var container: Color { .init(hex: 0xD3D3D3) }
-    static var background: Color { .white }
+    static var inversePrimary: Color { .white }
     
     var hexString: String { uiColor.hexString }
 }
