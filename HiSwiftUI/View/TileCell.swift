@@ -71,7 +71,7 @@ public struct TileCell: View {
                         } else {
                             Text(model.detail!)
                                 .font(.system(size: 13))
-                                .foregroundStyle(Color.gray)
+                                .foregroundStyle(Color.secondary)
                         }
                         // indicator
                         if !(model.indicated ?? false) {

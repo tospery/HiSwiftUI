@@ -12,10 +12,17 @@ import UIKit
 public extension Color {
     public var uiColor: UIColor { .init(self) }
     
-    static var surface: Color { .init(hex: 0xF4F4F4) }
-    static var inversePrimary: Color { .white }
-    
     var hexString: String { uiColor.hexString }
+    
+    static var inversePrimary: Color {
+        (profileService.value?.isDark ?? false) ? .black : .white
+        // .white
+    }
+    
+    static var surface: Color {
+        (profileService.value?.isDark ?? false) ? .black.opacity(0.7) : .init(hex: 0xF4F4F4)
+        // .init(hex: 0xF4F4F4)
+    }
 }
 
 public extension UIColor {
