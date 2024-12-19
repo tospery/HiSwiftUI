@@ -24,7 +24,7 @@ public struct ButtonCell: View {
             Button(action: action) {
                 HStack {
                     Spacer()
-                    Text((model.title ?? "").localizedStringKey)
+                    Text((model.title ?? "").localizedKey)
                         .font(.headline)
                         .foregroundStyle(Color.accentColor)
                     Spacer()
@@ -37,7 +37,7 @@ public struct ButtonCell: View {
                 Spacer()
                     .frame(width: 20)
                 Button(action: action) {
-                    Text((model.title ?? "").localizedStringKey)
+                    Text((model.title ?? "").localizedKey)
                         .font(.headline)
                         .foregroundStyle(Color.inversePrimary)
                         .frame(maxWidth: .infinity)

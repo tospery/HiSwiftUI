@@ -29,7 +29,7 @@ public struct TileCell: View {
     public var body: some View {
         if model.isSpace {
             Rectangle()
-                .fill(model.color?.uiColor?.swiftUIColor ?? Color.clear)
+                .fill(model.color?.swiftUIColor ?? Color.clear)
                 .frame(maxWidth: .infinity)
                 .frame(height: model.height ?? 12)
         } else {

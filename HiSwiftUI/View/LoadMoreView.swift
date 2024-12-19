@@ -21,7 +21,7 @@ public struct LoadMoreView: View {
         HStack(spacing: 0) {
             Spacer()
             if noMoreData {
-                Text("List.NoMoreData.Hint".localizedStringKey)
+                Text("List.NoMoreData.Hint".localizedKey)
                     .font(.system(size: 14))
                     .foregroundStyle(Color.primary.opacity(0.8))
             } else {

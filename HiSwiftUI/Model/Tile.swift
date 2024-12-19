@@ -16,7 +16,7 @@ public struct Tile: ModelType {
     public var separated: Bool? = true
     public var indicated: Bool? = false
     public var checked: Bool? = false
-    public var autoLinked: Bool? = false
+    public var autoLinked: Bool? = true
     public var height: Double?
     public var icon: String?
     public var title: String?
@@ -40,7 +40,7 @@ public struct Tile: ModelType {
         separated: Bool? = true,
         indicated: Bool? = false,
         checked: Bool? = false,
-        autoLinked: Bool? = false,
+        autoLinked: Bool? = true,
         height: Double? = nil,
         color: String? = nil,
         tintColor: String? = nil,
