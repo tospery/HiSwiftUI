@@ -52,6 +52,13 @@ public extension String {
         return "\(UIApplication.shared.appScheme)://\(ret)"
     }
     
+    var isValidWebUrl: Bool {
+        if self.isValidHttpUrl || self.isValidHttpsUrl {
+            return true
+        }
+        return false
+    }
+    
     var isValidInternalUrl: Bool {
         guard let url = self.url else { return false }
         return url.scheme == UIApplication.shared.appScheme
