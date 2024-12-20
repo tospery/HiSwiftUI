@@ -79,7 +79,7 @@ public struct TileCell: View {
                         } else {
                             Image(systemName: "chevron.right")
                                 .font(.system(size: 14))
-                                .foregroundStyle(Color.accentColor)
+                                .foregroundStyle(Color.secondary.opacity(0.6))
                                 .padding(.trailing)
                         }
                         // checked
