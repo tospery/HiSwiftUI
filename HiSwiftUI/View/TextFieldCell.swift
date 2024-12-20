@@ -43,6 +43,7 @@ public struct TextFieldCell: View {
                 .textInputAutocapitalization(.never)
                 .focused($isFocused)
                 .keyboardType(keyboardType)
+                .padding(.horizontal)
                 .onChange(of: isFocused) { newValue in
                     focused = newValue
                 }
@@ -58,6 +59,8 @@ public struct TextFieldCell: View {
                     isFocused = focused
                 }
         }
+        .frame(height: 44)
+        .background(Color.inversePrimary)
     }
 }
 

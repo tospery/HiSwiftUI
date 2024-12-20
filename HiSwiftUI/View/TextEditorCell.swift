@@ -43,6 +43,7 @@ public struct TextEditorCell: View {
             )
                 .frame(maxWidth: .infinity)
                 .frame(height: 120)
+                .padding(.horizontal)
                 .onChange(of: text) { newValue in
                     if let limit = characterLimit, newValue.count > limit {
                         text = String(newValue.prefix(limit))
@@ -55,10 +56,13 @@ public struct TextEditorCell: View {
                         .font(.system(size: 12))
                         .foregroundStyle(Color.primary.opacity(0.8))
                 }
+                .padding(.trailing, 8)
+                .padding(.bottom, 4)
             } else {
                 EmptyView()
             }
         }
+        .background(Color.inversePrimary)
     }
     
 }
