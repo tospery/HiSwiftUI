@@ -83,9 +83,4 @@ public extension String {
         return path.removingPrefix("/").removingSuffix("/")
     }
     
-    var swiftUIColor: Color? { self.uiColor?.swiftUIColor }
-    
-    
-    var swiftUIImage: SwiftUI.Image? { SwiftUI.Image.init(self) }
-    
 }
