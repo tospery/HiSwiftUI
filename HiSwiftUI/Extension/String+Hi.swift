@@ -12,6 +12,13 @@ import SwiftUIKit_Hi
 
 public extension String {
     
+    var localizedString: String {
+        if profileService.value?.localization == .english {
+            return englishLocalizedString
+        }
+        return chineseLocalizedString
+    }
+    
     var apiURLString: String {
         if self.hasPrefix(UIApplication.shared.baseApiUrl) {
             return self
@@ -68,5 +75,8 @@ public extension String {
     }
     
     var swiftUIColor: Color? { self.uiColor?.swiftUIColor }
+    
+    
+    var swiftUIImage: SwiftUI.Image? { SwiftUI.Image.init(self) }
     
 }
