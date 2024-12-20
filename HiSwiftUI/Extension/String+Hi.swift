@@ -73,11 +73,13 @@ public extension String {
     }
     
     var routeHost: String {
-        self.url?.host() ?? ""
+        let urlString = self.isValidInternalUrl ? self : self.appURLString
+        return urlString.url?.host() ?? ""
     }
     
     var routePath: String {
-        guard let path = self.url?.path() else { return "" }
+        let urlString = self.isValidInternalUrl ? self : self.appURLString
+        guard let path = urlString.url?.path() else { return "" }
         return path.removingPrefix("/").removingSuffix("/")
     }
     
