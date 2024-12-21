@@ -66,6 +66,18 @@ extension HiNav {
         return urlString(host: .sheet, parameters: parameters)
     }
     
+    // MARK: - popup
+    public func popupURLString(_ type: String, _ data: String) -> String {
+        var parameters = [String: String].init()
+        if type.isNotEmpty {
+            parameters[Parameter.type] = type
+        }
+        if data.isNotEmpty {
+            parameters[Parameter.data] = data
+        }
+        return urlString(host: .popup, parameters: parameters)
+    }
+    
     // MARK: - login
     public func checkNeedLogin(_ target: String) -> Bool {
         guard let url = target.url else { return false }
