@@ -19,12 +19,12 @@ public struct SimpleHeaderIdleView: View {
         VStack {
             if progress >= 1.5 {
                 Text("Header.Pulling.Text")
-                    .font(.callout)
-                    .foregroundStyle(Color.primary)
+                    .font(.system(size: 13))
+                    .foregroundStyle(Color.secondary)
             } else {
                 Text("Header.Idle.Text")
-                    .font(.callout)
-                    .foregroundStyle(Color.primary)
+                    .font(.system(size: 13))
+                    .foregroundStyle(Color.secondary)
             }
         }
         .frame(height: 32)

@@ -14,8 +14,8 @@ public struct SimpleFooterNoMoreDataView: View {
     public var body: some View {
         VStack {
             Text("Footer.NoMoreData.Text")
-                .font(.callout)
-                .foregroundStyle(Color.primary)
+                .font(.system(size: 13))
+                .foregroundStyle(Color.secondary)
         }
         .frame(height: 32)
     }
