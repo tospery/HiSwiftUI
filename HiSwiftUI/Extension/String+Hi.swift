@@ -18,40 +18,7 @@ public extension String {
         }
         return chineseLocalizedString
     }
-    
-    var apiURLString: String {
-        if self.hasPrefix(UIApplication.shared.baseApiUrl) {
-            return self
-        }
-        let app = "\(UIApplication.shared.appScheme)://"
-        let web = "\(UIApplication.shared.baseWebUrl)/"
-        var ret = self.removingPrefix(app)
-        ret = ret.removingPrefix(web)
-        return "\(UIApplication.shared.baseApiUrl)/\(ret)"
-    }
-    
-    var webURLString: String {
-        if self.hasPrefix(UIApplication.shared.baseWebUrl) {
-            return self
-        }
-        let app = "\(UIApplication.shared.appScheme)://"
-        let api = "\(UIApplication.shared.baseApiUrl)/"
-        var ret = self.removingPrefix(app)
-        ret = ret.removingPrefix(api)
-        return "\(UIApplication.shared.baseWebUrl)/\(ret)"
-    }
-    
-    var appURLString: String {
-        if self.hasPrefix("\(UIApplication.shared.appScheme)://") {
-            return self
-        }
-        let web = "\(UIApplication.shared.baseWebUrl)/"
-        let api = "\(UIApplication.shared.baseApiUrl)/"
-        var ret = self.removingPrefix(web)
-        ret = ret.removingPrefix(api)
-        return "\(UIApplication.shared.appScheme)://\(ret)"
-    }
-    
+
     var isValidWebUrl: Bool {
         if self.isValidHttpUrl || self.isValidHttpsUrl {
             return true
@@ -59,28 +26,43 @@ public extension String {
         return false
     }
     
-    var isValidInternalUrl: Bool {
-        guard let url = self.url else { return false }
-        return url.scheme == UIApplication.shared.appScheme
-    }
-    
-    var isValidExternalUrl: Bool {
-        guard let scheme = self.url?.scheme else { return false }
-        if scheme == UIApplication.shared.appScheme || scheme == "http" || scheme == "https" {
-            return false
-        }
+    var isValidInternalWebUrl: Bool {
+        guard isValidWebUrl else { return false }
+        guard self.hasPrefix(UIApplication.shared.baseWebUrl) else { return false }
         return true
     }
     
+    var isValidAppUrl: Bool { !isValidWebUrl }
+    
+    var isValidInternalAppUrl: Bool {
+        guard isValidAppUrl else { return false }
+        return self.url?.scheme == UIApplication.shared.appScheme
+    }
+    
     var routeHost: String {
-        let urlString = self.isValidInternalUrl ? self : self.appURLString
-        return urlString.url?.host() ?? ""
+        if self.isValidInternalAppUrl {
+            return self.url?.host() ?? ""
+        }
+        if self.isValidInternalWebUrl {
+            var string = self.removingPrefix(UIApplication.shared.baseWebUrl)
+            string = "\(UIApplication.shared.appScheme)://\(string)"
+            return string.url?.host() ?? ""
+        }
+        return ""
     }
     
     var routePath: String {
-        let urlString = self.isValidInternalUrl ? self : self.appURLString
-        guard let path = urlString.url?.path() else { return "" }
-        return path.removingPrefix("/").removingSuffix("/")
+        if self.isValidInternalAppUrl {
+            guard let path = self.url?.path() else { return "" }
+            return path.removingPrefix("/").removingSuffix("/")
+        }
+        if self.isValidInternalWebUrl {
+            var string = self.removingPrefix(UIApplication.shared.baseWebUrl)
+            string = "\(UIApplication.shared.appScheme)://\(string)"
+            guard let path = string.url?.path() else { return "" }
+            return path.removingPrefix("/").removingSuffix("/")
+        }
+        return ""
     }
     
 }

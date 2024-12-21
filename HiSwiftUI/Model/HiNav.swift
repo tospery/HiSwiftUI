@@ -81,7 +81,7 @@ public protocol HiNavCompatible {
     func isLogined() -> Bool
     func needLogin(host: HiNav.Host, path: HiNav.Path?) -> Bool
     
-    // state
+    // parse
     func resolution(_ target: String) -> Any?
     
 }
