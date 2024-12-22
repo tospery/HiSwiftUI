@@ -13,10 +13,10 @@ import SwiftUIKit_Hi
 public extension String {
     
     var localizedString: String {
-        if profileService.value?.localization == .english {
-            return englishLocalizedString
+        if profileService.value?.localization == .chinese {
+            return chineseLocalizedString
         }
-        return chineseLocalizedString
+        return englishLocalizedString
     }
 
     var isValidWebUrl: Bool {

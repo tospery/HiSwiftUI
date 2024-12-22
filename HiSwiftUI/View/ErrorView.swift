@@ -26,15 +26,15 @@ public struct ErrorView: View {
             VStack {
                 error.asHiError.displayImage!
                     .padding(.bottom, 5)
-                Text(error.asHiError.failureReason ?? "")
+                Text((error.asHiError.failureReason ?? "").localizedStringKey)
+                    .font(.system(size: 16))
                     .multilineTextAlignment(.center)
                     .foregroundStyle(Color.primary)
-                    .font(.title3)
                     .padding(.bottom, 5)
-                Text(error.asHiError.errorDescription ?? "")
+                Text((error.asHiError.errorDescription ?? "").localizedStringKey)
+                    .font(.system(size: 13))
                     .multilineTextAlignment(.center)
                     .foregroundStyle(Color.primary.opacity(0.4))
-                    .font(.body)
             }
              .frame(maxWidth: .infinity, maxHeight: .infinity)
              .contentShape(.rect)
