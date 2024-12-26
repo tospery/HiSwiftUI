@@ -15,7 +15,7 @@ public struct Separator: View {
     
     public var body: some View {
         Rectangle()
-            .fill(Color.secondary.opacity(0.24))
+            .fill(Color.secondary.opacity(0.12))
             .frame(height: pixelOne)
     }
     
