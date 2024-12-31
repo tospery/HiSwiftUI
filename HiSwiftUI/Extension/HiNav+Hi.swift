@@ -18,18 +18,18 @@ extension HiNav {
         if type != nil {
             parameters[Parameter.type] = type!.rawValue.string
         }
-        return urlString(host: .back, parameters: parameters)
+        return deepLink(host: .back, parameters: parameters)
     }
     
     // MARK: - toast
     public func toastActivityURLString(_ active: Bool) -> String {
-        urlString(host: .toast, parameters: [
+        deepLink(host: .toast, parameters: [
             Parameter.active: active.string
         ])
     }
     
     public func toastMessageURLString(_ message: String, active: Bool? = nil) -> String {
-        urlString(host: .toast, parameters: [
+        deepLink(host: .toast, parameters: [
             Parameter.message: message
         ])
     }
@@ -47,7 +47,7 @@ extension HiNav {
         if jsonString.isNotEmpty {
             parameters[Parameter.actions] = jsonString
         }
-        return urlString(host: .alert, parameters: parameters)
+        return deepLink(host: .alert, parameters: parameters)
     }
     
     // MARK: - sheet
@@ -63,7 +63,7 @@ extension HiNav {
         if jsonString.isNotEmpty {
             parameters[Parameter.actions] = jsonString
         }
-        return urlString(host: .sheet, parameters: parameters)
+        return deepLink(host: .sheet, parameters: parameters)
     }
     
     // MARK: - popup
@@ -75,7 +75,7 @@ extension HiNav {
         if data.isNotEmpty {
             parameters[Parameter.data] = data
         }
-        return urlString(host: .popup, parameters: parameters)
+        return deepLink(host: .popup, parameters: parameters)
     }
     
     // MARK: - login

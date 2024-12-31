@@ -93,8 +93,8 @@ final public class HiNav {
     
     public static var shared = HiNav()
     
-    public func urlString(host: Host, path: Path? = nil, parameters: [String: String]? = nil) -> String {
-        var url = "\(UIApplication.shared.appScheme)://\(host)".url!
+    public func deepLink(host: Host, path: Path? = nil, parameters: [String: String]? = nil) -> String {
+        var url = "\(UIApplication.shared.urlScheme)://\(host)".url!
         if let path = path {
             url.appendPathComponent(path)
         }

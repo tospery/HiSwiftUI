@@ -36,7 +36,7 @@ public extension String {
     
     var isValidInternalAppUrl: Bool {
         guard isValidAppUrl else { return false }
-        return self.url?.scheme == UIApplication.shared.appScheme
+        return self.url?.scheme == UIApplication.shared.urlScheme
     }
     
     var routeHost: String {
@@ -45,7 +45,7 @@ public extension String {
         }
         if self.isValidInternalWebUrl {
             var string = self.removingPrefix(UIApplication.shared.baseWebUrl)
-            string = "\(UIApplication.shared.appScheme)://\(string)"
+            string = "\(UIApplication.shared.urlScheme)://\(string)"
             return string.url?.host() ?? ""
         }
         return ""
@@ -58,7 +58,7 @@ public extension String {
         }
         if self.isValidInternalWebUrl {
             var string = self.removingPrefix(UIApplication.shared.baseWebUrl)
-            string = "\(UIApplication.shared.appScheme)://\(string)"
+            string = "\(UIApplication.shared.urlScheme)://\(string)"
             guard let path = string.url?.path() else { return "" }
             return path.removingPrefix("/").removingSuffix("/")
         }
