@@ -13,7 +13,7 @@ import HiBase
 extension HiNav {
     
     // MARK: - back
-    public func backURLString(_ type: BackType? = nil) -> String {
+    public func backDeepLink(_ type: BackType? = nil) -> String {
         var parameters = [String: String].init()
         if type != nil {
             parameters[Parameter.type] = type!.rawValue.string
@@ -22,20 +22,20 @@ extension HiNav {
     }
     
     // MARK: - toast
-    public func toastActivityURLString(_ active: Bool) -> String {
+    public func toastActivityDeepLink(_ active: Bool) -> String {
         deepLink(host: .toast, parameters: [
             Parameter.active: active.string
         ])
     }
     
-    public func toastMessageURLString(_ message: String, active: Bool? = nil) -> String {
+    public func toastMessageDeepLink(_ message: String, active: Bool? = nil) -> String {
         deepLink(host: .toast, parameters: [
             Parameter.message: message
         ])
     }
     
     // MARK: - alert
-    public func alertURLString(_ title: String, _ message: String, _ actions: [AlertActionType]) -> String {
+    public func alertDeepLink(_ title: String, _ message: String, _ actions: [AlertActionType]) -> String {
         var parameters = [String: String].init()
         if title.isNotEmpty {
             parameters[Parameter.title] = title
@@ -51,7 +51,7 @@ extension HiNav {
     }
     
     // MARK: - sheet
-    public func sheetURLString(_ title: String, _ message: String, _ actions: [AlertActionType]) -> String {
+    public func sheetDeepLink(_ title: String, _ message: String, _ actions: [AlertActionType]) -> String {
         var parameters = [String: String].init()
         if title.isNotEmpty {
             parameters[Parameter.title] = title
@@ -67,7 +67,7 @@ extension HiNav {
     }
     
     // MARK: - popup
-    public func popupURLString(_ type: String, _ data: String?) -> String {
+    public func popupDeepLink(_ type: String, _ data: String?) -> String {
         var parameters = [String: String].init()
         if type.isNotEmpty {
             parameters[Parameter.type] = type
