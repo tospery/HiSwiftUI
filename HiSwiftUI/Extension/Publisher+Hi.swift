@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 import HiCore
 
-private var subscriptions = Set<AnyCancellable>()
+public var disposeBag = Set<AnyCancellable>.init()
 
 public extension Publisher {
     
@@ -19,13 +19,14 @@ public extension Publisher {
 //            .eraseToAnyPublisher()
 //    }
     
-//    func async() async -> Result<Output, Failure> where Failure == Error {
+//    func asResult() async -> Result<Output, Error> {
 //        await withCheckedContinuation { continuation in
 //            var cancellable: AnyCancellable?
 //            var finishedWithoutValue = true
 //            cancellable = first()
-//                .sink { result in
-//                    switch result {
+//                .sink { completion in
+//                    cancellable?.cancel()
+//                    switch completion {
 //                    case .finished:
 //                        if finishedWithoutValue {
 //                            continuation.resume(returning: .failure(HiError.unknown))
@@ -33,11 +34,12 @@ public extension Publisher {
 //                    case let .failure(error):
 //                        continuation.resume(returning: .failure(error))
 //                    }
-//                    cancellable?.cancel()
 //                } receiveValue: { value in
+//                    cancellable?.cancel()
 //                    finishedWithoutValue = false
 //                    continuation.resume(returning: .success(value))
 //                }
+//            cancellable?.store(in: &disposeBag)
 //        }
 //    }
 
@@ -59,6 +61,17 @@ public extension Publisher {
             }
         } catch {
             return nil
+        }
+        return nil
+    }
+    
+    func asError() async -> Error? {
+        do {
+            for try await value in self.values {
+                return nil
+            }
+        } catch {
+            return error
         }
         return nil
     }
