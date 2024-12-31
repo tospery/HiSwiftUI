@@ -101,9 +101,13 @@ extension NSError: HiErrorCompatible {
                 return .server(ErrorCode.serverInternalError, message, self.userInfo)
             } else if self.code == 401 {
                 return .userNotLoginedIn
+            } else {
+//                if message == "操作取消" {
+//                    return .cancel
+//                }
             }
         }
-        return .server(ErrorCode.nserror, message, self.userInfo)
+        return .nserror(self.code, message, self.userInfo)
     }
 }
 
