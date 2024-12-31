@@ -24,4 +24,8 @@ extension View {
         self.modifier(RefreshableModifier(isRefreshable: isRefreshable, action: action))
     }
     
+    public func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+        clipShape(RoundedCorner(radius: radius, corners: corners))
+    }
+    
 }
