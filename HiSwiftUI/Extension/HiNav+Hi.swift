@@ -67,13 +67,13 @@ extension HiNav {
     }
     
     // MARK: - popup
-    public func popupURLString(_ type: String, _ data: String) -> String {
+    public func popupURLString(_ type: String, _ data: String?) -> String {
         var parameters = [String: String].init()
         if type.isNotEmpty {
             parameters[Parameter.type] = type
         }
-        if data.isNotEmpty {
-            parameters[Parameter.data] = data
+        if data?.isNotEmpty ?? false {
+            parameters[Parameter.data] = data!
         }
         return deepLink(host: .popup, parameters: parameters)
     }

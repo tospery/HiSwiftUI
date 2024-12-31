@@ -65,4 +65,10 @@ public extension String {
         return ""
     }
     
+    var dictionary: [String: String] {
+        guard let data = self.data(using: .utf8) else { return [:] }
+        guard let object = try? data.jsonObject() else { return [:] }
+        return object as? [String: String] ?? [:]
+    }
+    
 }
