@@ -32,15 +32,21 @@ public extension String {
         return true
     }
     
+    var isValidUnivLink: Bool {
+        guard isValidWebUrl else { return false }
+        guard self.hasPrefix(UIApplication.shared.baseUnivLink) else { return false }
+        return true
+    }
+    
     var isValidAppUrl: Bool { !isValidWebUrl }
     
-    var isValidInternalAppUrl: Bool {
+    var isValidDeepLink: Bool {
         guard isValidAppUrl else { return false }
         return self.url?.scheme == UIApplication.shared.urlScheme
     }
     
     var routeHost: String {
-        if self.isValidInternalAppUrl {
+        if self.isValidDeepLink {
             return self.url?.host() ?? ""
         }
         if self.isValidInternalWebUrl {
@@ -52,7 +58,7 @@ public extension String {
     }
     
     var routePath: String {
-        if self.isValidInternalAppUrl {
+        if self.isValidDeepLink {
             guard let path = self.url?.path() else { return "" }
             return path.removingPrefix("/").removingSuffix("/")
         }
