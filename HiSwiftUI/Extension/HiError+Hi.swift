@@ -44,6 +44,8 @@ extension NSError: HiErrorCompatible {
             message = msg1
         } else if let msg2 = self.userInfo["msg"] as? String, msg2.isNotEmpty {
             message = msg2
+        } else if let msg3 = self.userInfo["description"] as? String, msg3.isNotEmpty {
+            message = msg3
         }
         if self.domain == ASWebAuthenticationSessionError.errorDomain {
             if let compatible = self as? ASWebAuthenticationSessionError {
