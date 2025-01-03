@@ -12,7 +12,8 @@ import HiCore
 import HiLog
 
 public func logEnvironment() {
-    log(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.path ?? "", module: Module.hiSwiftUI)
+    log("本地目录: \(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.path ?? "")", module: Module.hiSwiftUI)
+    log("信息设置: \(profileService.value!)", module: Module.hiSwiftUI)
     log("运行环境: \(UIApplication.shared.inferredEnvironment)", module: Module.hiSwiftUI)
     log("设备型号: \(UIDevice.current.modelName)", module: Module.hiSwiftUI)
     log("硬件标识: \(UIDevice.current.uuid)", module: Module.hiSwiftUI)
