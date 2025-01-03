@@ -14,7 +14,7 @@ public extension Color {
     
     var hexString: String { uiColor.hexString }
     
-    static var inversePrimary: Color {
+    static var background: Color {
         .init(uiColor: .init(dynamicProvider: { traitCollection in
             traitCollection.userInterfaceStyle == .dark ? .black : .white
         }))

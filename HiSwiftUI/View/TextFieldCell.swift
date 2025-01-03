@@ -60,7 +60,7 @@ public struct TextFieldCell: View {
                 }
         }
         .frame(height: 44)
-        .background(Color.inversePrimary)
+        .background(Color.background)
     }
 }
 

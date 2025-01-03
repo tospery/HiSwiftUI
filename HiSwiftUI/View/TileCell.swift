@@ -102,7 +102,7 @@ public struct TileCell: View {
                 }
             }
             .frame(height: 44)
-            .background(Color.inversePrimary)
+            .background(Color.background)
         }
     }
     

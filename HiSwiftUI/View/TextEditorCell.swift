@@ -62,7 +62,7 @@ public struct TextEditorCell: View {
                 EmptyView()
             }
         }
-        .background(Color.inversePrimary)
+        .background(Color.background)
     }
     
 }
