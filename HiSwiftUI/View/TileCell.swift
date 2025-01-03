@@ -62,7 +62,6 @@ public struct TileCell: View {
                         } else {
                             text()
                                 .font(.system(size: 15))
-                                .foregroundStyle(Color.primary.opacity(0.8))
                         }
                         Spacer()
                         // detail
@@ -114,7 +113,11 @@ public struct TileCell: View {
         let resource = LocalizedStringResource.init(stringLiteral: string)
         var text = AttributedString.init(localized: resource)
         text.font = .system(size: 15)
-        text.foregroundColor = .primary.opacity(0.8)
+        if model.disabled ?? false {
+            text.foregroundColor = .secondary
+        } else {
+            text.foregroundColor = .primary.opacity(0.8)
+        }
         text.link = nil
         return Text(text)
     }
