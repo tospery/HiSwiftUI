@@ -62,6 +62,9 @@ public struct TileCell: View {
                         } else {
                             text()
                                 .font(.system(size: 15))
+                                .foregroundStyle(
+                                    (model.disabled ?? false) ? Color.secondary : Color.primary.opacity(0.8)
+                                )
                         }
                         Spacer()
                         // detail
