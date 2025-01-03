@@ -25,4 +25,11 @@ public extension Color {
             traitCollection.userInterfaceStyle == .dark ? .init(hex: 0x191919) : .init(hex: 0xF4F4F4)
         }))
     }
+    
+    static var container: Color {
+        .init(uiColor: .init(dynamicProvider: { traitCollection in
+            traitCollection.userInterfaceStyle == .dark ? .init(hex: 0x262626) : .init(hex: 0xE9E9E9)
+        }))
+    }
+    
 }

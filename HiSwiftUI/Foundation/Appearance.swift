@@ -35,26 +35,29 @@ final public class Appearance {
         // NavBar
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.configureWithOpaqueBackground()
-        navigationBarAppearance.backgroundColor = .systemBackground
-        let backButtonAppearance = UIBarButtonItemAppearance()
-        backButtonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.clear]
-        navigationBarAppearance.backButtonAppearance = backButtonAppearance
+        navigationBarAppearance.backgroundColor = Color.container.uiColor
+        let barButtonItemAppearance = UIBarButtonItemAppearance()
+        barButtonItemAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.clear]
+        navigationBarAppearance.buttonAppearance = barButtonItemAppearance
+        navigationBarAppearance.backButtonAppearance = barButtonItemAppearance
         let backIndicatorImage = UIImage.back.withAlwaysOriginalTintColor(Color.primary.uiColor)
         navigationBarAppearance.setBackIndicatorImage(backIndicatorImage, transitionMaskImage: backIndicatorImage)
         UINavigationBar.appearance().standardAppearance = navigationBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
         UINavigationBar.appearance().compactAppearance = navigationBarAppearance
-        UINavigationBar.appearance().tintColor = color
-        UINavigationBar.appearance().barTintColor = Color.secondary.uiColor
+        // UINavigationBar.appearance().isTranslucent = false
         
         // TabBar
         let tabBarAppearance = UITabBarAppearance.init()
         tabBarAppearance.configureWithOpaqueBackground()
-        tabBarAppearance.backgroundColor = .systemBackground
+        tabBarAppearance.backgroundColor = Color.container.uiColor
+        let tabBarItemAppearance = UITabBarItemAppearance()
+        tabBarItemAppearance.normal.iconColor = Color.secondary.uiColor
+        tabBarItemAppearance.normal.titleTextAttributes = [.foregroundColor: Color.secondary.uiColor]
+        tabBarItemAppearance.selected.iconColor = color
+        tabBarItemAppearance.selected.titleTextAttributes = [.foregroundColor: color]
         UITabBar.appearance().standardAppearance = tabBarAppearance
         UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
-        UITabBar.appearance().tintColor = color
-        UITabBar.appearance().unselectedItemTintColor = Color.secondary.uiColor
         
         // TableView
         // UITableView.appearance().sectionHeaderTopPadding = 0
