@@ -45,7 +45,6 @@ final public class Appearance {
         UINavigationBar.appearance().standardAppearance = navigationBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
         UINavigationBar.appearance().compactAppearance = navigationBarAppearance
-        // UINavigationBar.appearance().isTranslucent = false
         
         // TabBar
         let tabBarAppearance = UITabBarAppearance.init()
