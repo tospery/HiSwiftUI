@@ -31,7 +31,7 @@ final public class Appearance {
     
     public func basic(_ color: UIColor) {
         // Window
-        UIWindow.appearance().tintColor = color
+        // UIWindow.appearance().tintColor = color
         // NavBar
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.configureWithOpaqueBackground()
