@@ -11,7 +11,7 @@ import HiCore
 import SwiftUI
 
 public protocol AppearanceCompatible {
-    func myConfig(_ color: UIColor)
+    func myConfig()
 }
 
 final public class Appearance {
@@ -21,17 +21,19 @@ final public class Appearance {
     public init() {
     }
     
-    public func config(_ color: UIColor) {
+    @discardableResult
+    public func config() {
         if let compatible = self as? AppearanceCompatible {
-            compatible.myConfig(color)
+            compatible.myConfig()
         } else {
-            self.basic(color)
+            self.basic()
         }
     }
     
-    public func basic(_ color: UIColor) {
+    public func basic() {
+        let color = profileService.value?.accentColor.color ?? .blue
         // Window
-        // UIWindow.appearance().tintColor = color
+        UIWindow.appearance().tintColor = color
         // NavBar
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.configureWithOpaqueBackground()
