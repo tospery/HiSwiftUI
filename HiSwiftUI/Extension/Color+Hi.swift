@@ -20,6 +20,12 @@ public extension Color {
         }))
     }
     
+    static var foreground: Color {
+        .init(uiColor: .init(dynamicProvider: { traitCollection in
+            traitCollection.userInterfaceStyle == .dark ? .white : .black
+        }))
+    }
+    
     static var surface: Color {
         .init(uiColor: .init(dynamicProvider: { traitCollection in
             traitCollection.userInterfaceStyle == .dark ? .init(hex: 0x191919) : .init(hex: 0xF4F4F4)
