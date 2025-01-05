@@ -10,9 +10,16 @@ import ObjectMapper
 import HiBase
 import HiCore
 
+public enum HiTileStyle: Int, Codable {
+    case plain
+    case adjust
+    case space
+}
+
 public struct Tile: ModelType {
     
     public var id = ""
+    public var style = HiTileStyle.plain
     public var separated: Bool? = true
     public var indicated: Bool? = false
     public var checked: Bool? = false
@@ -25,16 +32,23 @@ public struct Tile: ModelType {
     public var color: String?
     public var tintColor: String?
     public var target: String?
-    public var kind: String?
     
-    public var isSpace: Bool { id.hasPrefix("space-") }
+    public var isSpace: Bool { style == .space }
 
+    public var hasExtendInfo: Bool {
+        if (detail?.isEmpty ?? true) && !(indicated ?? false) && !(checked ?? false) {
+            return false
+        }
+        return true
+    }
+    
     public init() { }
 
     public init?(map: Map) { }
     
     public init(
         id: String = "",
+        style: HiTileStyle = .plain,
         icon: String? = nil,
         title: String? = nil,
         detail: String? = nil,
@@ -46,10 +60,10 @@ public struct Tile: ModelType {
         height: Double? = nil,
         color: String? = nil,
         tintColor: String? = nil,
-        target: String? = nil,
-        kind: String? = nil
+        target: String? = nil
     ) {
         self.id = id
+        self.style = style
         self.icon = icon
         self.title = title
         self.detail = detail
@@ -62,11 +76,11 @@ public struct Tile: ModelType {
         self.color = color
         self.tintColor = tintColor
         self.target = target
-        self.kind = kind
     }
 
     mutating public  func mapping(map: Map) {
         id              <- (map["id"], StringTransform.shared)
+        style           <- (map["style"], EnumTypeCastTransform<HiTileStyle>())
         height          <- (map["height"], DoubleTransform.shared)
         color           <- (map["color"], StringTransform.shared)
         tintColor       <- (map["tintColor"], StringTransform.shared)
@@ -79,7 +93,6 @@ public struct Tile: ModelType {
         autoLinked      <- (map["autoLinked"], BoolTransform.shared)
         disabled        <- (map["disabled"], BoolTransform.shared)
         target          <- (map["target"], StringTransform.shared)
-        kind            <- (map["kind"], StringTransform.shared)
     }
     
     public func copyWith(id: String) -> Tile {
@@ -114,6 +127,7 @@ public struct Tile: ModelType {
     
     public static func == (lhs: Self, rhs: Self) -> Bool {
         lhs.id == rhs.id &&
+        lhs.style == rhs.style &&
         lhs.height == rhs.height &&
         lhs.color == rhs.color &&
         lhs.tintColor == rhs.tintColor &&
@@ -124,8 +138,7 @@ public struct Tile: ModelType {
         lhs.separated == rhs.separated &&
         lhs.checked == rhs.checked &&
         lhs.autoLinked == rhs.autoLinked &&
-        lhs.target == rhs.target &&
-        lhs.kind == rhs.kind
+        lhs.target == rhs.target
     }
 
     public static func space(
@@ -134,6 +147,7 @@ public struct Tile: ModelType {
     ) -> Tile {
         .init(
             id: "space-\(UUID().uuidString)",
+            style: .space,
             height: height,
             color: color
         )

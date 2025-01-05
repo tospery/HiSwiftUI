@@ -65,6 +65,7 @@ public struct TileCell: View {
                                 .foregroundStyle(
                                     (model.disabled ?? false) ? Color.secondary : Color.primary.opacity(0.8)
                                 )
+                                .padding(.trailing, (model.style == .adjust ? (model.hasExtendInfo ? 0 : 30) : 0))
                         }
                         Spacer()
                         // detail
