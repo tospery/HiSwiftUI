@@ -8,10 +8,10 @@
 import Foundation
 import SwifterSwift
 
-//https://github.com/profile可以表示两种意思：
-//1、profile用户
-//2、当前用户详情
-//如何区分？可以通过native查询参数来确定。
+/// 导航的设计
+/// target分为两类，一个是通用链接（urlString，来自网页），另一个是深度链接（deepLink，来自应用）
+/// 通用链接和深度链接没有语义上的关联性，而需要进行转换，可以通过添加自定义的fromWeb参数来区分，深度链接的生产是来源于app还是web
+/// 对于deepLink，只采用host的设计方式，不需要path，以便进行简化。
 
 /// 导航的分类
 public enum JumpType: Int {
