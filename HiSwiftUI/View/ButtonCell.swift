@@ -29,7 +29,7 @@ public struct ButtonCell: View {
                         .foregroundStyle(Color.accentColor)
                     Spacer()
                 }
-                .frame(height: 40)
+                .frame(height: 44)
                 .background(Color.background)
             }
         } else {
