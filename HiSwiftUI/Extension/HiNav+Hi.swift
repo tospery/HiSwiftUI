@@ -78,6 +78,18 @@ extension HiNav {
         return deepLink(host: .popup, parameters: parameters)
     }
     
+    // MARK: - logic
+    public func logicDeepLink(_ type: String, _ data: String?) -> String {
+        var parameters = [String: String].init()
+        if type.isNotEmpty {
+            parameters[Parameter.type] = type
+        }
+        if data?.isNotEmpty ?? false {
+            parameters[Parameter.data] = data!
+        }
+        return deepLink(host: .logic, parameters: parameters)
+    }
+    
     // MARK: - login
     public func checkNeedLogin(_ target: String) -> Bool {
         guard let url = target.url else { return false }

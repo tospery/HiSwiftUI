@@ -53,17 +53,18 @@ public enum OpenType: Int {
     case sheet
     /// 弹窗
     case popup
-    /// 登录（因为登录页通常需要自定义，故以打开方式处理）
-    case login
-    /// 首页
-    case home
+//    /// 登录（因为登录页通常需要自定义，故以打开方式处理）
+//    case login
+//    /// 首页
+//    case home
+    case logic
     
     static let allHosts = [
         HiNav.Host.toast,
         HiNav.Host.alert,
         HiNav.Host.sheet,
         HiNav.Host.popup,
-        HiNav.Host.login
+        HiNav.Host.logic
     ]
 }
 
@@ -83,7 +84,6 @@ public protocol HiNavCompatible {
     
     // parse
     func resolution(_ target: String) -> Any?
-    
 }
 
 final public class HiNav {
@@ -121,11 +121,12 @@ extension HiNav.Host {
     public static var alert: HiNav.Host { "alert" }
     public static var sheet: HiNav.Host { "sheet" }
     public static var popup: HiNav.Host { "popup" }
-    public static var login: HiNav.Host { "login" }
+    public static var logic: HiNav.Host { "logic" }
     
     public static var dashboard: HiNav.Host { "dashboard" }
     public static var personal: HiNav.Host { "personal" }
     
+    public static var login: HiNav.Host { "login" }
     public static var web: HiNav.Host { "web" }
 }
 
