@@ -31,8 +31,6 @@ final public class Library {
     }
     
     public func basic() {
-//        logType.addDestination(ConsoleDestination.init())
-//        logType.addDestination(FileDestination.init())
         logger.register(provider: SwiftyBeaverProvider())
         ReachPublisher.shared.start()
     }
