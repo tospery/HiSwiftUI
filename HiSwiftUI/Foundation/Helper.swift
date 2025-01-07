@@ -23,6 +23,7 @@ public func logEnvironment() {
     log("应用版本: \(UIApplication.shared.version)", module: Module.hiSwiftUI)
     log("网页地址: \(UIApplication.shared.baseWebUrl)", module: Module.hiSwiftUI)
     log("服务地址: \(UIApplication.shared.baseApiUrl)", module: Module.hiSwiftUI)
+    log("通用链接: \(UIApplication.shared.baseUnivLink)", module: Module.hiSwiftUI)
     log("屏幕尺寸: \(UIScreen.main.bounds.size)", module: Module.hiSwiftUI)
     log("安全区域: \(safeArea)", module: Module.hiSwiftUI)
     log("状态栏(\(statusBarHeightConstant))|导航栏(\(navigationBarHeight))|标签栏(\(tabBarHeight))", module: Module.hiSwiftUI)

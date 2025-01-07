@@ -71,10 +71,10 @@ public extension String {
         return ""
     }
     
-    var dictionary: [String: String] {
+    var dictionary: [String: Any] {
         guard let data = self.data(using: .utf8) else { return [:] }
         guard let object = try? data.jsonObject() else { return [:] }
-        return object as? [String: String] ?? [:]
+        return object as? [String: Any] ?? [:]
     }
     
 }
