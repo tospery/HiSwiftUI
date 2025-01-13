@@ -17,6 +17,7 @@ Pod::Spec.new do |s|
   
   s.source_files = 'HiSwiftUI/**/*'
   s.dependency 'HiCore', '~> 1.0'
+  s.dependency 'HiNav/Combine', '~> 1.0'
   s.dependency 'HiNet/Combine', '~> 1.0'
   s.dependency 'HiResource', '~> 1.0'
   s.dependency 'SFSafeSymbols', '~> 5.0'
