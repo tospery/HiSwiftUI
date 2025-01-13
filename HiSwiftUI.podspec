@@ -19,6 +19,7 @@ Pod::Spec.new do |s|
   s.dependency 'HiCore', '~> 1.0'
   s.dependency 'HiNet/Combine', '~> 1.0'
   s.dependency 'HiResource', '~> 1.0'
+  s.dependency 'SFSafeSymbols', '~> 5.0'
   s.dependency 'CombineExt', '~> 1.0'
   s.dependency 'SwifterSwift', '~> 6.0'
   s.dependency 'Kingfisher', '~> 7.0'
