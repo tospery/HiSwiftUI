@@ -81,34 +81,25 @@ extension NSError: HiErrorCompatible {
             // NSURLErrorCannotParseResponse            -1017
             // -1202（此服务器的证书无效。）
             // logger.print("看看错误码: \(NSURLErrorFileDoesNotExist)")
-
-            if self.code == -1020 {
+            if self.code == NSURLErrorCancelled {
+                return .cancel
+            }
+            if self.code == NSURLErrorTimedOut {
+                return .timeout
+            }
+            if self.code == NSURLErrorNotConnectedToInternet {
                 return .networkNotConnected
             }
-            // -1005 ~ -999
-            if self.code >= NSURLErrorNetworkConnectionLost &&
-                self.code <= NSURLErrorCancelled {
-                // return .server(ErrorCode.serverUnableConnect, message, self.userInfo)
-                return .networkNotConnected
-            }
-            if self.code == NSURLErrorCannotParseResponse {
+            if (self.code == NSURLErrorBadServerResponse)
+                || (self.code >= NSURLErrorCannotParseResponse && self.code <= NSURLErrorZeroByteResource) {
                 return .dataInvalid
             }
-//            if self.code >= NSURLErrorDNSLookupFailed ||
-//                        self.code <= NSURLErrorCannotParseResponse {
-//                return .server(ErrorCode.serverNoResponse, self.localizedDescription)
-//            }
-            return .networkNotConnected
+            return .networkNotReachable
         } else {
             if self.code == 500 {
-                // return .server(ErrorCode.serverInternalError, message, self.userInfo)
                 return .networkNotReachable
             } else if self.code == 401 {
                 return .userNotLoginedIn
-            } else {
-//                if message == "操作取消" {
-//                    return .cancel
-//                }
             }
         }
         return .app(self.domain, self.code, message, self.userInfo)
