@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SwiftyBeaver
 import HiCore
 import HiNet
 import HiLog
@@ -31,7 +30,6 @@ final public class Library {
     }
     
     public func basic() {
-        logger.register(provider: SwiftyBeaverProvider())
         ReachPublisher.shared.start()
     }
     

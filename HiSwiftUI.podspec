@@ -1,9 +1,9 @@
 Pod::Spec.new do |s|
   s.name             = 'HiSwiftUI'
-  s.version          = '1.0.1'
-  s.summary          = 'Hi SwiftUI.'
+  s.version          = '1.0.2'
+  s.summary          = 'iOS App Framework'
   s.description      = <<-DESC
-						Hi for SwiftUI.
+						iOS App Framework with SwiftUI.
                        DESC
   s.homepage         = 'https://github.com/tospery/HiSwiftUI'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
