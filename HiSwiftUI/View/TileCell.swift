@@ -104,7 +104,7 @@ public struct TileCell: View {
                     }
                 }
             }
-            .frame(height: 44)
+            .frame(height: model.height ?? 44)
             .background(Color.background)
         }
     }
