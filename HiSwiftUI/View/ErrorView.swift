@@ -10,10 +10,12 @@ import HiCore
 
 public struct ErrorView: View {
     private let error: Error
+    private let descriptionOnly: Bool
     private let action: () -> Void
 
-    public init(_ error: Error, action: @escaping () -> Void) {
+    public init(_ error: Error, descriptionOnly: Bool = false, action: @escaping () -> Void) {
         self.error = error
+        self.descriptionOnly = descriptionOnly
         self.action = action
     }
 
@@ -22,19 +24,26 @@ public struct ErrorView: View {
             action()
         } label: {
             VStack {
-                if let image = error.asHiError.displayImage {
-                    image
+                if descriptionOnly {
+                    Text((error.asHiError.errorDescription ?? "").localizedStringKey)
+                        .font(.system(size: 14))
+                        .multilineTextAlignment(.center)
+                        .foregroundStyle(Color.primary.opacity(0.4))
+                } else {
+                    if let image = error.asHiError.displayImage {
+                        image
+                            .padding(.bottom, 5)
+                    }
+                    Text((error.asHiError.failureReason ?? "").localizedStringKey)
+                        .font(.system(size: 16))
+                        .multilineTextAlignment(.center)
+                        .foregroundStyle(Color.primary)
                         .padding(.bottom, 5)
+                    Text((error.asHiError.errorDescription ?? "").localizedStringKey)
+                        .font(.system(size: 14))
+                        .multilineTextAlignment(.center)
+                        .foregroundStyle(Color.primary.opacity(0.4))
                 }
-                Text((error.asHiError.failureReason ?? "").localizedStringKey)
-                    .font(.system(size: 16))
-                    .multilineTextAlignment(.center)
-                    .foregroundStyle(Color.primary)
-                    .padding(.bottom, 5)
-                Text((error.asHiError.errorDescription ?? "").localizedStringKey)
-                    .font(.system(size: 14))
-                    .multilineTextAlignment(.center)
-                    .foregroundStyle(Color.primary.opacity(0.4))
             }
              .frame(maxWidth: .infinity, maxHeight: .infinity)
              .contentShape(.rect)
