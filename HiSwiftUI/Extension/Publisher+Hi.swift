@@ -19,40 +19,40 @@ public extension Publisher {
 //            .eraseToAnyPublisher()
 //    }
     
-//    func asResult() async -> Result<Output, Error> {
-//        await withCheckedContinuation { continuation in
-//            var cancellable: AnyCancellable?
-//            var finishedWithoutValue = true
-//            cancellable = first()
-//                .sink { completion in
-//                    cancellable?.cancel()
-//                    switch completion {
-//                    case .finished:
-//                        if finishedWithoutValue {
-//                            continuation.resume(returning: .failure(HiError.unknown))
-//                        }
-//                    case let .failure(error):
-//                        continuation.resume(returning: .failure(error))
-//                    }
-//                } receiveValue: { value in
-//                    cancellable?.cancel()
-//                    finishedWithoutValue = false
-//                    continuation.resume(returning: .success(value))
-//                }
-//            cancellable?.store(in: &disposeBag)
-//        }
-//    }
-
     func asResult() async -> Result<Output, Error> {
-        do {
-            for try await value in self.values {
-                return .success(value)
-            }
-        } catch {
-            return .failure(error)
+        await withCheckedContinuation { continuation in
+            var cancellable: AnyCancellable?
+            var finishedWithoutValue = true
+            cancellable = first()
+                .sink { completion in
+                    cancellable?.cancel()
+                    switch completion {
+                    case .finished:
+                        if finishedWithoutValue {
+                            continuation.resume(returning: .failure(HiError.unknown))
+                        }
+                    case let .failure(error):
+                        continuation.resume(returning: .failure(error))
+                    }
+                } receiveValue: { value in
+                    cancellable?.cancel()
+                    finishedWithoutValue = false
+                    continuation.resume(returning: .success(value))
+                }
+            cancellable?.store(in: &disposeBag)
         }
-        return .failure(HiError.unknown)
     }
+
+//    func asResult() async -> Result<Output, Error> {
+//        do {
+//            for try await value in self.values {
+//                return .success(value)
+//            }
+//        } catch {
+//            return .failure(error)
+//        }
+//        return .failure(HiError.unknown)
+//    }
     
     func asOutput() async -> Output? {
         do {
