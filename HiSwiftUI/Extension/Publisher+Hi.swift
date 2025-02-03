@@ -13,46 +13,64 @@ public var disposeBag = Set<AnyCancellable>.init()
 
 public extension Publisher {
     
-//    func resultPublisher() -> AnyPublisher<Result<Output, Failure>, Never> {
-//        return map(Result.success)
-//            .catch { Just(Result.failure($0)) }
-//            .eraseToAnyPublisher()
+//    func asResult1() async -> Result<Output, Error> {
+//        await withCheckedContinuation { continuation in
+//            var cancellable: AnyCancellable?
+//            var finishedWithoutValue = true
+//            cancellable = first()
+//                .sink { completion in
+//                    cancellable?.cancel()
+//                    switch completion {
+//                    case .finished:
+//                        if finishedWithoutValue {
+//                            continuation.resume(returning: .failure(HiError.unknown))
+//                        }
+//                    case let .failure(error):
+//                        continuation.resume(returning: .failure(error))
+//                    }
+//                } receiveValue: { value in
+//                    cancellable?.cancel()
+//                    finishedWithoutValue = false
+//                    continuation.resume(returning: .success(value))
+//                }
+//            cancellable?.store(in: &disposeBag)
+//        }
 //    }
     
-    func asResult() async -> Result<Output, Error> {
-        await withCheckedContinuation { continuation in
-            var cancellable: AnyCancellable?
+    func async() async throws -> Output {
+        try await withCheckedThrowingContinuation { continuation in
             var finishedWithoutValue = true
-            cancellable = first()
+            var cancellable: AnyCancellable?
+            cancellable = self
                 .sink { completion in
                     cancellable?.cancel()
                     switch completion {
                     case .finished:
                         if finishedWithoutValue {
-                            continuation.resume(returning: .failure(HiError.unknown))
+                            continuation.resume(throwing: HiError.unknown)
                         }
                     case let .failure(error):
-                        continuation.resume(returning: .failure(error))
+                        continuation.resume(throwing: error)
                     }
                 } receiveValue: { value in
                     cancellable?.cancel()
                     finishedWithoutValue = false
-                    continuation.resume(returning: .success(value))
+                    continuation.resume(returning: value)
                 }
             cancellable?.store(in: &disposeBag)
         }
     }
 
-//    func asResult() async -> Result<Output, Error> {
-//        do {
-//            for try await value in self.values {
-//                return .success(value)
-//            }
-//        } catch {
-//            return .failure(error)
-//        }
-//        return .failure(HiError.unknown)
-//    }
+    func asResult() async -> Result<Output, Error> {
+        do {
+            for try await value in self.values {
+                return .success(value)
+            }
+        } catch {
+            return .failure(error)
+        }
+        return .failure(HiError.unknown)
+    }
     
     func asOutput() async -> Output? {
         do {
