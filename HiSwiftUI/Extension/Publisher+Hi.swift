@@ -12,54 +12,30 @@ import HiCore
 public var disposeBag = Set<AnyCancellable>.init()
 
 public extension Publisher {
-    
-//    func asResult1() async -> Result<Output, Error> {
-//        await withCheckedContinuation { continuation in
-//            var cancellable: AnyCancellable?
+
+//    func async() async throws -> Output {
+//        try await withCheckedThrowingContinuation { continuation in
 //            var finishedWithoutValue = true
-//            cancellable = first()
+//            var cancellable: AnyCancellable?
+//            cancellable = self
 //                .sink { completion in
 //                    cancellable?.cancel()
 //                    switch completion {
 //                    case .finished:
 //                        if finishedWithoutValue {
-//                            continuation.resume(returning: .failure(HiError.unknown))
+//                            continuation.resume(throwing: HiError.unknown)
 //                        }
 //                    case let .failure(error):
-//                        continuation.resume(returning: .failure(error))
+//                        continuation.resume(throwing: error)
 //                    }
 //                } receiveValue: { value in
 //                    cancellable?.cancel()
 //                    finishedWithoutValue = false
-//                    continuation.resume(returning: .success(value))
+//                    continuation.resume(returning: value)
 //                }
 //            cancellable?.store(in: &disposeBag)
 //        }
 //    }
-    
-    func async() async throws -> Output {
-        try await withCheckedThrowingContinuation { continuation in
-            var finishedWithoutValue = true
-            var cancellable: AnyCancellable?
-            cancellable = self
-                .sink { completion in
-                    cancellable?.cancel()
-                    switch completion {
-                    case .finished:
-                        if finishedWithoutValue {
-                            continuation.resume(throwing: HiError.unknown)
-                        }
-                    case let .failure(error):
-                        continuation.resume(throwing: error)
-                    }
-                } receiveValue: { value in
-                    cancellable?.cancel()
-                    finishedWithoutValue = false
-                    continuation.resume(returning: value)
-                }
-            cancellable?.store(in: &disposeBag)
-        }
-    }
 
     func asResult() async -> Result<Output, Error> {
         do {
@@ -108,6 +84,22 @@ public extension Publisher {
             }).store(in: &disposeBag)
         }
     }
+    
+//    static func fromAsync<T>(_ tasks: [() async -> T]) async -> AnyPublisher<T, Error> {
+//        await withCheckedContinuation { continuation in
+//            await withTaskGroup(of: T.self) { group in
+//                for task in tasks {
+//                    group.addTask {
+//                        await task()
+//                    }
+//                }
+//                
+//                for await result in group {
+//                    continuation.resume(returning: result)
+//                }
+//            }
+//        }
+//    }
 
     //                    let stream = AsyncThrowingStream<Domain.QWen, Error> { continuation in
     //                        self.platformClient.network().qwenService().qwen(content: content)

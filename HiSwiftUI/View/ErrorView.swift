@@ -20,6 +20,34 @@ public struct ErrorView: View {
     }
 
     public var body: some View {
+//        VStack {
+//            if descriptionOnly {
+//                Text((error.asHiError.errorDescription ?? "").localizedStringKey)
+//                    .font(.system(size: 14))
+//                    .multilineTextAlignment(.center)
+//                    .foregroundStyle(Color.primary.opacity(0.4))
+//            } else {
+//                if let image = error.asHiError.displayImage {
+//                    image
+//                        .padding(.bottom, 5)
+//                }
+//                Text((error.asHiError.failureReason ?? "").localizedStringKey)
+//                    .font(.system(size: 16))
+//                    .multilineTextAlignment(.center)
+//                    .foregroundStyle(Color.primary)
+//                    .padding(.bottom, 5)
+//                Text((error.asHiError.errorDescription ?? "").localizedStringKey)
+//                    .font(.system(size: 14))
+//                    .multilineTextAlignment(.center)
+//                    .foregroundStyle(Color.primary.opacity(0.4))
+//            }
+//        }
+//         .frame(maxWidth: .infinity, maxHeight: .infinity)
+//         .background(Color.surface)
+//         .contentShape(.rect)
+//         .onTapGesture {
+//             action()
+//         }
         Button {
             action()
         } label: {
