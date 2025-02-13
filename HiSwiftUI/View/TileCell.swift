@@ -105,7 +105,7 @@ public struct TileCell: View {
                 }
             }
             .frame(height: model.height ?? 44)
-            .background(Color.background)
+            .background(model.color?.swiftUIColor ?? Color.background)
         }
     }
     
