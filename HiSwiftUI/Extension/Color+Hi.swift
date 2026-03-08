@@ -10,7 +10,7 @@ import SwiftUI
 import SwifterSwift
 
 public extension Color {
-    public var uiColor: UIColor { .init(self) }
+    var uiColor: UIColor { .init(self) }
     
     var hexString: String { uiColor.hexString }
     

@@ -13,7 +13,7 @@ import SwiftUIKit_Hi
 public extension String {
     
     var localizedString: String {
-        if profileService.value?.localization == .chinese {
+        if preferenceService.value?.localization == .chinese {
             return chineseLocalizedString
         }
         return englishLocalizedString

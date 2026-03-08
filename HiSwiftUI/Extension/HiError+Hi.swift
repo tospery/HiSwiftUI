@@ -35,7 +35,7 @@ extension HiError {
     
 }
 
-extension NSError: HiErrorCompatible {
+extension NSError: @retroactive HiErrorCompatible {
     public var hiError: HiError {
         log("NSError转换-> \(self.domain), \(self.code), \(self.localizedDescription)", module: Module.hiSwiftUI)
         
@@ -106,7 +106,7 @@ extension NSError: HiErrorCompatible {
     }
 }
 
-extension ASWebAuthenticationSessionError: HiErrorCompatible {
+extension ASWebAuthenticationSessionError: @retroactive HiErrorCompatible {
     public var hiError: HiError {
         switch self.code {
         case .canceledLogin:
@@ -117,7 +117,7 @@ extension ASWebAuthenticationSessionError: HiErrorCompatible {
     }
 }
 
-extension SKError: HiErrorCompatible {
+extension SKError: @retroactive HiErrorCompatible {
     public var hiError: HiError {
         switch self.code {
         case .paymentCancelled:
@@ -128,7 +128,7 @@ extension SKError: HiErrorCompatible {
     }
 }
 
-extension AFError: HiErrorCompatible {
+extension AFError: @retroactive HiErrorCompatible {
     public var hiError: HiError {
         switch self {
         case .explicitlyCancelled:
@@ -141,7 +141,7 @@ extension AFError: HiErrorCompatible {
     }
 }
 
-extension KingfisherError: HiErrorCompatible {
+extension KingfisherError: @retroactive HiErrorCompatible {
     public var hiError: HiError {
         switch self {
         case .responseError(let reason):
@@ -161,7 +161,7 @@ extension KingfisherError: HiErrorCompatible {
     }
 }
 
-extension MoyaError: HiErrorCompatible {
+extension MoyaError: @retroactive HiErrorCompatible {
     public var hiError: HiError {
         switch self {
         case let .underlying(error, _):
@@ -186,7 +186,7 @@ extension MoyaError: HiErrorCompatible {
     }
 }
 
-extension HiNetError: HiErrorCompatible {
+extension HiNetError: @retroactive HiErrorCompatible {
     public var hiError: HiError {
         switch self {
         case .unknown: return .unknown

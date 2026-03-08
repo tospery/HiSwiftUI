@@ -8,7 +8,6 @@
 import SwiftUI
 import HiCore
 import HiNav
-import HiSwiftUI
 
 public struct NavigationBar: View {
     

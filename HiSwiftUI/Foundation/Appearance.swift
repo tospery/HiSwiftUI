@@ -21,7 +21,6 @@ final public class Appearance {
     public init() {
     }
     
-    @discardableResult
     public func config() {
         if let compatible = self as? AppearanceCompatible {
             compatible.myConfig()
@@ -31,7 +30,7 @@ final public class Appearance {
     }
     
     public func basic() {
-        let color = profileService.value?.accentColor.color ?? .blue
+        let color = preferenceService.value?.accentColor.color ?? .blue
         // Window
         UIWindow.appearance().tintColor = color
         // NavBar

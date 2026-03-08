@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import HiBase
 
-public let profileService = CurrentValueSubject<(any ProfileType)?, Never>(nil)
+public let preferenceService = CurrentValueSubject<(any PreferenceType)?, Never>(nil)
 
 final public class Appdata {
     
@@ -18,8 +18,8 @@ final public class Appdata {
     public init() {
     }
     
-    public func inject(_ profile: any ProfileType) {
-        profileService.send(profile)
+    public func inject(_ preference: any PreferenceType) {
+        preferenceService.send(preference)
     }
     
 }

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'HiSwiftUI'
-  s.version          = '1.1.1'
+  s.version          = '1.2.0'
   s.summary          = 'iOS App Framework'
   s.description      = <<-DESC
 						iOS App Framework with SwiftUI.
@@ -20,10 +20,10 @@ Pod::Spec.new do |s|
   s.dependency 'HiNav/Combine', '~> 1.0'
   s.dependency 'HiNet/Combine', '~> 1.0'
   s.dependency 'HiResource', '~> 1.0'
-  s.dependency 'SFSafeSymbols', '~> 5.0'
+  s.dependency 'SFSafeSymbols', '~> 7.0'
   s.dependency 'CombineExt', '~> 1.0'
-  s.dependency 'SwifterSwift', '~> 6.0'
-  s.dependency 'Kingfisher', '~> 7.0'
+  s.dependency 'SwifterSwift', '~> 8.0'
+  s.dependency 'Kingfisher', '~> 8.0'
   s.dependency 'Refresh-Hi', '~> 0.2'
   s.dependency 'SwiftUIKit-Hi', '~> 5.0.0'
   

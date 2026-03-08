@@ -15,7 +15,7 @@ public extension Bundle {
     }
     
     static var localizedBundle: Bundle? {
-        if profileService.value?.localization == .english {
+        if preferenceService.value?.localization == .english {
             return .enBundle
         }
         return .zhBundle

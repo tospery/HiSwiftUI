@@ -61,7 +61,7 @@ public extension Publisher {
     
     func asError() async -> Error? {
         do {
-            for try await value in self.values {
+            for try await _ in self.values {
                 return nil
             }
         } catch {

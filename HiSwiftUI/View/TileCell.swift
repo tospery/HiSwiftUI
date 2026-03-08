@@ -9,7 +9,6 @@ import SwiftUI
 import SwiftUIKit_Hi
 import HiResource
 import HiCore
-import HiSwiftUI
 
 public struct TileCell: View {
 

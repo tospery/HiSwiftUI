@@ -55,16 +55,23 @@ extension UIViewController {
 
     /// Returns the current application's top most view controller.
     public class var topMost: UIViewController? {
-        guard let currentWindows = self.sharedApplication?.windows else { return nil }
-        var rootViewController: UIViewController?
-        for window in currentWindows {
-            if let windowRootViewController = window.rootViewController, window.isKeyWindow {
-                rootViewController = windowRootViewController
-                break
-            }
-        }
+//        guard let currentWindows = self.sharedApplication?.windows else { return nil }
+//        var rootViewController: UIViewController?
+//        for window in currentWindows {
+//            if let windowRootViewController = window.rootViewController, window.isKeyWindow {
+//                rootViewController = windowRootViewController
+//                break
+//            }
+//        }
+//        
+//        return self.topMost(of: rootViewController)
         
-        return self.topMost(of: rootViewController)
+        let keyWindow = UIApplication.shared.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .filter { $0.activationState == .foregroundActive }
+            .flatMap { $0.windows }
+            .first { $0.isKeyWindow }
+        return self.topMost(of: keyWindow?.rootViewController)
     }
 
     /// Returns the top most view controller from given view controller's stack.

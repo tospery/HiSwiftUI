@@ -8,7 +8,6 @@
 import SwiftUI
 import Combine
 import HiResource
-import HiSwiftUI
 
 public struct TextFieldCell: View {
 
