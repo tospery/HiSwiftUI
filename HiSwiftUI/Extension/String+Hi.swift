@@ -52,7 +52,8 @@ public extension String {
     }
     
     var deepLink: String? {
-        guard isValidDeepAppUrl else { return nil }
+        if isValidDeepAppUrl { return self }
+        guard isValidDeepWebUrl else { return nil }
         guard var components = URLComponents(string: self) else { return nil }
         let scheme = Bundle.main.urlScheme() ?? ""
         var path = components.path.removingPrefix("/").removingSuffix("/").components(separatedBy: "/").joined(separator: "/")
