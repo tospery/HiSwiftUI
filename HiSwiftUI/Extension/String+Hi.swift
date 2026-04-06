@@ -10,23 +10,25 @@ import HiCore
 import SwifterSwift
 import SwiftUIKit_Hi
 
+// deep link分为app link和custom url scheme
+// 即，webDeepLink（） appDeepLink
 public extension String {
     
     var localizedString: String {
-        if preferenceService.value?.localization == .chinese {
-            return chineseLocalizedString
+        if preferenceService.value?.localization == .english {
+            return englishLocalizedString
         }
-        return englishLocalizedString
+        return chineseLocalizedString
     }
 
     var isValidWebUrl: Bool {
-        if self.isValidHttpUrl || self.isValidHttpsUrl {
-            return true
-        }
-        return false
+        guard let scheme = self.url?.scheme?.lowercased(), scheme.isNotEmpty else { return false }
+        return [
+            "http", "https"
+        ].contains(scheme)
     }
     
-    var isValidInternalWebUrl: Bool {
+    var isValidDeepWebUrl: Bool {
         guard isValidWebUrl else { return false }
         guard let components = self.url?.host()?.components(separatedBy: ".") else { return false }
         if components.count == 2 {
@@ -37,21 +39,20 @@ public extension String {
         return false
     }
     
-//    var isValidUnivLink: Bool {
-//        guard isValidWebUrl else { return false }
-////        guard self.hasPrefix(UIApplication.shared.baseUnivLink) else { return false }
-//        return true
-//    }
+    var isValidAppUrl: Bool {
+        guard let scheme = self.url?.scheme?.lowercased(), scheme.isNotEmpty else { return false }
+        return ![
+            "http", "https"
+        ].contains(scheme)
+    }
     
-    var isValidAppUrl: Bool { !isValidWebUrl }
-    
-    var isValidDeepLink: Bool {
+    var isValidDeepAppUrl: Bool {
         guard isValidAppUrl else { return false }
         return self.url?.scheme?.lowercased() == UIApplication.shared.urlScheme
     }
     
     var deepLink: String? {
-        guard isValidInternalWebUrl else { return nil }
+        guard isValidDeepAppUrl else { return nil }
         guard var components = URLComponents(string: self) else { return nil }
         let scheme = Bundle.main.urlScheme() ?? ""
         var path = components.path.removingPrefix("/").removingSuffix("/").components(separatedBy: "/").joined(separator: "/")
@@ -60,10 +61,10 @@ public extension String {
     }
     
     var routeHost: String {
-        if self.isValidDeepLink {
+        if self.isValidDeepAppUrl {
             return self.url?.host() ?? ""
         }
-        if self.isValidInternalWebUrl {
+        if self.isValidDeepWebUrl {
             guard let components = self.url?.path().removingPrefix("/").removingSuffix("/").components(separatedBy: "/"), components.count != 0 else { return "" }
             return components.first!
         }
@@ -71,11 +72,11 @@ public extension String {
     }
     
     var routePath: String {
-        if self.isValidDeepLink {
+        if self.isValidDeepAppUrl {
             guard let path = self.url?.path() else { return "" }
             return path.removingPrefix("/").removingSuffix("/")
         }
-        if self.isValidInternalWebUrl {
+        if self.isValidDeepWebUrl {
             guard let components = self.url?.path().removingPrefix("/").removingSuffix("/").components(separatedBy: "/") else { return "" }
             if components.count <= 1 {
                 return ""
