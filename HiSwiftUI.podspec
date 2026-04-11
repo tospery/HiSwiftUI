@@ -25,5 +25,5 @@ Pod::Spec.new do |s|
   s.dependency 'SwifterSwift', '~> 8.0'
   s.dependency 'Kingfisher', '~> 8.0'
   s.dependency 'Refresh-Hi', '~> 0.2'
-  s.dependency 'SwiftUIKit-Hi', '~> 6.0'
+  s.dependency 'SwiftUIKit-Hi', '6.1.0'
 end
