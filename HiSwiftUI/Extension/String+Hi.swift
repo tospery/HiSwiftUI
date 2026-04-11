@@ -54,9 +54,9 @@ public extension String {
     var deepLink: String? {
         if isValidDeepAppUrl { return self }
         guard isValidDeepWebUrl else { return nil }
-        guard var components = URLComponents(string: self) else { return nil }
+        guard let components = URLComponents(string: self) else { return nil }
         let scheme = Bundle.main.urlScheme() ?? ""
-        var path = components.path.removingPrefix("/").removingSuffix("/").components(separatedBy: "/").joined(separator: "/")
+        let path = components.path.removingPrefix("/").removingSuffix("/").components(separatedBy: "/").joined(separator: "/")
         let query = components.percentEncodedQuery.map { "?\($0)" } ?? ""
         return "\(scheme)://\(path)\(query)"
     }
