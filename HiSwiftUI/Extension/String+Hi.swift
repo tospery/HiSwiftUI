@@ -14,12 +14,16 @@ import SwiftUIKit_Hi
 // 即，webDeepLink（） appDeepLink
 public extension String {
     
-    var localizedString: String {
-        if preferenceService.value?.localization == .english {
-            return englishLocalizedString
-        }
-        return chineseLocalizedString
-    }
+//    var localizedString: String {
+//////        if myPref.value?.localization == .chinese {
+//////            return chineseLocalizedString
+//////        }
+////        if Appdata.shared.isEnglishLocale {
+////            return englishLocalizedString
+////        }
+////        return chineseLocalizedString
+//        ""
+//    }
 
     var isValidWebUrl: Bool {
         guard let scheme = self.url?.scheme?.lowercased(), scheme.isNotEmpty else { return false }

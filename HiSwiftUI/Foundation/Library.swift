@@ -22,6 +22,9 @@ final public class Library {
     }
     
     public func setup() {
+#if DEBUG
+        print("Library.setup只能调用一次！！！")
+#endif
         if let compatible = self as? LibraryCompatible {
             compatible.mySetup()
         } else {
