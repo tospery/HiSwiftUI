@@ -34,13 +34,7 @@ public extension String {
     
     var isValidDeepWebUrl: Bool {
         guard isValidWebUrl else { return false }
-        guard let components = self.url?.host()?.components(separatedBy: ".") else { return false }
-        if components.count == 2 {
-            return components.first?.lowercased() == Bundle.main.urlScheme()
-        } else if components.count == 3 {
-            return components[1].lowercased() == Bundle.main.urlScheme()
-        }
-        return false
+        return self.lowercased().hasPrefix(Bundle.main.baseWebUrl.lowercased())
     }
     
     var isValidAppUrl: Bool {
@@ -55,15 +49,15 @@ public extension String {
         return self.url?.scheme?.lowercased() == UIApplication.shared.urlScheme
     }
     
-    var deepLink: String? {
-        if isValidDeepAppUrl { return self }
-        guard isValidDeepWebUrl else { return nil }
-        guard let components = URLComponents(string: self) else { return nil }
-        let scheme = Bundle.main.urlScheme() ?? ""
-        let path = components.path.removingPrefix("/").removingSuffix("/").components(separatedBy: "/").joined(separator: "/")
-        let query = components.percentEncodedQuery.map { "?\($0)" } ?? ""
-        return "\(scheme)://\(path)\(query)"
-    }
+//    var appUrlString: String? {
+//        if isValidDeepAppUrl { return self }
+//        guard isValidDeepWebUrl else { return nil }
+//        guard let components = URLComponents(string: self) else { return nil }
+//        let scheme = Bundle.main.urlScheme() ?? ""
+//        let path = components.path.removingPrefix("/").removingSuffix("/").components(separatedBy: "/").joined(separator: "/")
+//        let query = components.percentEncodedQuery.map { "?\($0)" } ?? ""
+//        return "\(scheme)://\(path)\(query)"
+//    }
     
     var routeHost: String {
         if self.isValidDeepAppUrl {
