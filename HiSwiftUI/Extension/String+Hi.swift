@@ -37,6 +37,13 @@ public extension String {
         return self.lowercased().hasPrefix(Bundle.main.baseWebUrl.lowercased())
     }
     
+    var isValidExternalWebUrl: Bool {
+        guard isValidWebUrl else { return false }
+        return self.lowercased().hasPrefix("https://apps.apple.com")
+    }
+    
+    // isValidExternalWebUrl
+    
     var isValidAppUrl: Bool {
         guard let scheme = self.url?.scheme?.lowercased(), scheme.isNotEmpty else { return false }
         return ![
