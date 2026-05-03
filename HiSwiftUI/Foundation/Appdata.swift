@@ -10,21 +10,21 @@ import SwiftUI
 import Combine
 import HiBase
 
-final public class Appdata: CustomStringConvertible {
+final public class Appdata: ObservableObject, CustomStringConvertible {
     
-    public var isDark: Bool? {
+    @Published public var isDark: Bool? {
         didSet {
             UserDefaults.standard.set(isDark, forKey: Parameter.isDark)
         }
     }
     
-    public var accentColor: String {
+    @Published public var accentColor: String {
         didSet {
             UserDefaults.standard.set(accentColor, forKey: Parameter.accentColor)
         }
     }
     
-    public var lastLaunchedVersion: String? {
+    @Published public var lastLaunchedVersion: String? {
         didSet {
             UserDefaults.standard.set(lastLaunchedVersion, forKey: Parameter.lastLaunchedVersion)
         }
