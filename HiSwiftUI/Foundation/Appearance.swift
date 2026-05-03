@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-import HiCore
+import HiBase
 import SwiftUI
 
 public protocol AppearanceCompatible {
@@ -30,7 +30,7 @@ final public class Appearance {
     }
     
     public func basic() {
-        let color = Appdata.shared.accentColor.color
+        let color = Appdata.shared.preferredTintColor.uiColor
         // Window
         UIWindow.appearance().tintColor = color
         // NavBar
