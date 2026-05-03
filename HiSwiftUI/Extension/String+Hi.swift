@@ -13,17 +13,6 @@ import SwiftUIKit_Hi
 // deep link分为app link和custom url scheme
 // 即，webDeepLink（） appDeepLink
 public extension String {
-    
-//    var localizedString: String {
-//////        if myPref.value?.localization == .chinese {
-//////            return chineseLocalizedString
-//////        }
-////        if Appdata.shared.isEnglishLocale {
-////            return englishLocalizedString
-////        }
-////        return chineseLocalizedString
-//        ""
-//    }
 
     var isValidWebUrl: Bool {
         guard let scheme = self.url?.scheme?.lowercased(), scheme.isNotEmpty else { return false }
@@ -42,8 +31,6 @@ public extension String {
         return self.lowercased().hasPrefix("https://apps.apple.com")
     }
     
-    // isValidExternalWebUrl
-    
     var isValidAppUrl: Bool {
         guard let scheme = self.url?.scheme?.lowercased(), scheme.isNotEmpty else { return false }
         return ![
@@ -55,16 +42,6 @@ public extension String {
         guard isValidAppUrl else { return false }
         return self.url?.scheme?.lowercased() == UIApplication.shared.urlScheme
     }
-    
-//    var appUrlString: String? {
-//        if isValidDeepAppUrl { return self }
-//        guard isValidDeepWebUrl else { return nil }
-//        guard let components = URLComponents(string: self) else { return nil }
-//        let scheme = Bundle.main.urlScheme() ?? ""
-//        let path = components.path.removingPrefix("/").removingSuffix("/").components(separatedBy: "/").joined(separator: "/")
-//        let query = components.percentEncodedQuery.map { "?\($0)" } ?? ""
-//        return "\(scheme)://\(path)\(query)"
-//    }
     
     var routeHost: String {
         if self.isValidDeepAppUrl {

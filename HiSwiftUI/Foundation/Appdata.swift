@@ -30,6 +30,8 @@ final public class Appdata: CustomStringConvertible {
         }
     }
     
+    public var preferredColorScheme: SwiftUI.ColorScheme { (self.isDark ?? false) ? .dark : .light }
+    
     public static var shared = Appdata()
     
     public init() {
@@ -45,27 +47,7 @@ final public class Appdata: CustomStringConvertible {
         }
         self.lastLaunchedVersion = UserDefaults.standard.string(forKey: Parameter.lastLaunchedVersion)
     }
-    
-//    public func pref(isDark: Bool? = nil, accentColor: String? = nil, locale: String? = nil) {
-////        if isDark == nil {
-////            if self.isDark == nil && UserDefaults.standard.object(forKey: Parameter.isDark) != nil {
-////                self.isDark = UserDefaults.standard.bool(forKey: Parameter.isDark)
-////            }
-////        } else {
-////            self.isDark = isDark
-////            UserDefaults.standard.set(self.isDark, forKey: Parameter.isDark)
-////        }
-//        
-////        if self.accentColor?.isEmpty ?? true {
-////            if self.accentColor == nil {
-////                self.accentColor = UserDefaults.standard.string(forKey: Parameter.accentColor)
-////            }
-////        } else {
-////            self.accentColor = accentColor
-////            UserDefaults.standard.set(self.accentColor, forKey: Parameter.accentColor)
-////        }
-//    }
-    
+
     public var description: String {
         "isDark: \(self.isDark), accentColor: \(self.accentColor), lastLaunchedVersion: \(self.lastLaunchedVersion)"
     }
