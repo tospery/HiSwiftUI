@@ -30,7 +30,7 @@ final public class Appearance {
     }
     
     public func basic() {
-        let color = Appdata.shared.preferredTintColor.uiColor
+        let color = Appdata.shared.preferredAccentColor.uiColor
         // Window
         UIWindow.appearance().tintColor = color
         // NavBar

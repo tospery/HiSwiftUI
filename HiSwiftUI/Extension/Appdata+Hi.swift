@@ -16,8 +16,8 @@ public extension Appdata {
         (self.isDark ?? false) ? .dark : .light
     }
     
-    var preferredTintColor: SwiftUI.Color {
-        var color = self.accentColor?.swiftUIColor
+    var preferredAccentColor: SwiftUI.Color {
+        var color = self.tintColor?.swiftUIColor
         if color == nil {
             color = Color("AccentColor")
         }
