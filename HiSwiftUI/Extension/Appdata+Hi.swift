@@ -12,10 +12,6 @@ import HiCore
 
 public extension Appdata {
     
-    var preferredColorScheme: SwiftUI.ColorScheme {
-        (self.isDark ?? false) ? .dark : .light
-    }
-    
     var preferredAccentColor: SwiftUI.Color {
         var color = self.tintColor?.swiftUIColor
         if color == nil {
