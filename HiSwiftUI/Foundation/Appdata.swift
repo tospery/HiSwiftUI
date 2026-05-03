@@ -30,6 +30,13 @@ final public class Appdata: ObservableObject, CustomStringConvertible {
         }
     }
     
+    @Published public var accessToken: String? {
+        didSet {
+            UserDefaults.standard.set(accessToken, forKey: Parameter.accessToken)
+        }
+    }
+    
+    public var alreadyLoggedIn: Bool { !(self.accessToken?.isEmpty ?? true) }
     public var preferredColorScheme: SwiftUI.ColorScheme { (self.isDark ?? false) ? .dark : .light }
     
     public static var shared = Appdata()
@@ -38,6 +45,7 @@ final public class Appdata: ObservableObject, CustomStringConvertible {
         if UserDefaults.standard.object(forKey: Parameter.isDark) != nil {
             self.isDark = UserDefaults.standard.bool(forKey: Parameter.isDark)
         }
+        self.accessToken = UserDefaults.standard.string(forKey: Parameter.accessToken)
         self.accentColor = UserDefaults.standard.string(forKey: Parameter.accentColor) ?? ""
         if self.accentColor.isEmpty {
             self.accentColor = Color("AccentColor").hexString
