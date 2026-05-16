@@ -17,6 +17,7 @@ public func logEnvironment() {
     log("运行环境: \(UIApplication.shared.inferredEnvironment)", module: Module.hiSwiftUI)
     log("设备型号: \(UIDevice.current.deviceName)", module: Module.hiSwiftUI)
     log("硬件标识: \(UIDevice.current.uuid)", module: Module.hiSwiftUI)
+    log("本机名称: \(UIDevice.current.name)", module: Module.hiSwiftUI)
     log("系统名称: \(UIDevice.current.systemName)", module: Module.hiSwiftUI)
     log("系统版本: \(UIDevice.current.systemVersion)", module: Module.hiSwiftUI)
     log("应用标识: \(UIApplication.shared.bundleIdentifier)", module: Module.hiSwiftUI)
@@ -27,6 +28,9 @@ public func logEnvironment() {
     log("屏幕尺寸: \(UIScreen.main.bounds.size)", module: Module.hiSwiftUI)
     log("安全区域: \(safeArea)", module: Module.hiSwiftUI)
     log("状态栏(\(statusBarHeightConstant))|导航栏(\(navigationBarHeight))|标签栏(\(tabBarHeight))", module: Module.hiSwiftUI)
+    log("用户名: \(Appdata.shared.userName ?? "")", module: Module.hiSwiftUI)
+    log("用户ID: \(Appdata.shared.userId ?? "")", module: Module.hiSwiftUI)
+    log("访问Token: \(Appdata.shared.accessToken ?? "")", module: Module.hiSwiftUI)
 }
 
 public func convertToResult<Output>(
