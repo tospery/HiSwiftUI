@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'HiSwiftUI'
-  s.version          = '1.2.2'
+  s.version          = '1.2.3'
   s.summary          = 'iOS App Framework'
   s.description      = <<-DESC
 						iOS App Framework with SwiftUI.
